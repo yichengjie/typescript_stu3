@@ -1,0 +1,21 @@
+{
+    "name": "typescript_stu3",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:yichengjie/typescript_stu3.git"
+    },
+    "keywords": [
+        "typescript",
+        "react"
+    ],
+    "author": {
+      "name": "yicj",
+      "email": "626659321@qq.com"   
+    },
+    "bugs": {
+        "url": "https://github.com/yichengjie/typescript_stu3/issues"
+    },
+    "homepage": "https://github.com/yichengjie/typescript_stu3#readme"
+}
