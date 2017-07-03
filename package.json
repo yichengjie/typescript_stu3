@@ -2,9 +2,7 @@
     "name": "typescript_stu3",
     "version": "1.0.0",
     "main": "index.js",
-    "scripts": {
-        
-    },
+    "scripts": {},
     "repository": {
         "type": "git",
         "url": "git@github.com:yichengjie/typescript_stu3.git"
@@ -24,13 +22,28 @@
     "dependencies": {
         "@types/react": "^15.0.34",
         "@types/react-dom": "^15.5.1",
+        "antd": "^2.11.2",
+        "lodash": "^4.17.4",
+        "moment": "^2.18.1",
         "react": "^15.6.1",
         "react-dom": "^15.6.1"
     },
     "devDependencies": {
+        "@types/react-hot-loader": "next",
         "awesome-typescript-loader": "^3.2.1",
+        "css-loader": "^0.28.4",
+        "express": "^4.15.3",
+        "extract-text-webpack-plugin": "^2.1.2",
+        "html-webpack-plugin": "^2.29.0",
+        "less": "^2.7.2",
+        "less-loader": "^4.0.4",
+        "react-hot-loader": "next",
         "source-map-loader": "^0.2.1",
+        "style-loader": "^0.18.2",
         "typescript": "^2.4.1",
-        "webpack": "^3.0.0"
+        "webpack": "^3.0.0",
+        "webpack-dev-server": "^2.5.0",
+        "webpack-manifest-plugin": "^1.1.0",
+        "webpack-merge": "^4.1.0"
     }
 }
