@@ -12,7 +12,7 @@ export default class Hello extends React.Component<HelloProps, undefined> {
         console.info('hello world .....') ;
         return (
             <div>
-                <Button>hello</Button>
+                <Button>hello world test</Button>
                 <br/>
                 <h1>Hello from {this.props.compiler} and {this.props.framework}!</h1>;
             </div>

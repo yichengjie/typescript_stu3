@@ -6,7 +6,8 @@
         "target": "es6",
         "jsx": "preserve",
         "allowSyntheticDefaultImports": true,
-        "experimentalDecorators": true
+        "experimentalDecorators": true,
+        "watch":true
     },
     "include": [
         "./scripts/ts/**/*"
