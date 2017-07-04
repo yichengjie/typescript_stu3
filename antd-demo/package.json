@@ -3,7 +3,9 @@
     "version": "1.0.0",
     "main": "index.html",
     "scripts": {
-        "build":"../node_modules/.bin/webpack --env=prod",
+        "tsc":"../node_modules/.bin/tsc",
+        "tscdev":"../node_modules/.bin/tsc --watch",
+        "build":"npm run tsc && ../node_modules/.bin/webpack --env=prod",
         "dev":"../node_modules/.bin/webpack-dev-server --env=dev"
     }
 }
