@@ -1,6 +1,7 @@
 import React from 'react' ;
 import ReactDOM from 'react-dom';
-import { AppContainer } from 'react-hot-loader'
+import { AppContainer } from 'react-hot-loader' ;
+import '../../assets/styles/index.less' ;
  
 export function createAppNode(){
     let appNode = document.createElement('div') ;
@@ -9,7 +10,7 @@ export function createAppNode(){
     return appNode ;
 }
 
-export const render = (Component,appNode) => {
+export const render = (Component:any,appNode:any) => {
   ReactDOM.render(
     <AppContainer>
       <Component />
