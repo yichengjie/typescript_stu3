@@ -5,7 +5,6 @@ import {createAppNode,render} from './common.jsx' ;
 
 
 
-
 let appNode = createAppNode() ;
 render(Category4EditApp,appNode) ;
 

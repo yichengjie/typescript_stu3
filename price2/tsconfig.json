@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+        "outDir": "./client/es6/",
+        "noImplicitAny": true,
+        "moduleResolution": "node",
+        "target": "es6",
+        "jsx": "preserve",
+        "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true
+    },
+    "include": [
+        "./client/typescript/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+    ]
+}
+// "outDir": "./es/",
+// "strictNullChecks": true,
+//"module": "commonjs",
+// "moduleResolution": "node",
+// "allowSyntheticDefaultImports": true,
+// "experimentalDecorators": true,
+// "jsx": "preserve",
+// "noUnusedParameters": true,
+// "noUnusedLocals": true,
+// "target": "es6"
