@@ -1,5 +1,12 @@
 {
+  "presets": [
+    ["es2015",{"modules":false}],
+    "stage-2",
+    "react"
+  ],
   "plugins": [
-    ["import", { "libraryName": "antd", "style": "css" }] // `style: true` 会加载 less 文件
+    "transform-class-properties",
+    ["import",{ "libraryName": "antd"}],
+    "react-hot-loader/babel"
   ]
 }

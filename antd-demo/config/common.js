@@ -2,7 +2,9 @@ var fs = require('fs'); // 引入fs模块
 var path = require('path') ;
 var stat = fs.stat ;
 let contextPath = path.resolve(__dirname, '../') ;
-let distPath = path.resolve(__dirname, '../dist') ;;
+let distPath = path.resolve(__dirname, '../dist') ;
+let srcPath = path.resolve(__dirname, '../scripts/es6') ;
+let assetsPath = path.resolve(__dirname,'../scripts/assest') ;
 
 //前端的根目录
 function getContextPath(){
@@ -11,6 +13,14 @@ function getContextPath(){
 
 function getDistPath(){
     return distPath ;
+}
+
+function getSrcPath(){
+    return srcPath ;
+}
+
+function getAssetsPath(){
+    return assetsPath ;
 }
 
 //删除指定的目录
@@ -95,5 +105,7 @@ module.exports = {
     copyAllFileToPath:copyAllFileToPath,
     getIPAdress:getIPAdress,
     getContextPath,
-    getDistPath
+    getDistPath,
+    getSrcPath,
+    getAssetsPath
 } ;

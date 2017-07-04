@@ -1,9 +1,12 @@
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 let common = require('./common.js') ;
 let distPath = common.getDistPath() ;
-let contextPath = common.getContextPath() ;
+let srcPath = common.getSrcPath() ;
+
 module.exports = {
     entry: {
-        index:contextPath + "/src/index.tsx",
+        index:srcPath + "/index.jsx",
     },
     output: {
         filename: "bundle.js",
@@ -12,15 +15,34 @@ module.exports = {
     },
     // Enable sourcemaps for debugging webpack's output.
     resolve: {
-        // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: [".ts", ".tsx", ".js", ".json"]
+        extensions: [".js", ".jsx", ".json"]
     },
     module: {
         rules: [
-            // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
-            { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
-            // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-            { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
-        ]
+           {
+            test: /\.jsx?$/,exclude: [/node_modules/],
+            use: {
+              loader: 'babel-loader',
+            },
+          },
+          {
+            test: /\.css$/,
+            use: ExtractTextPlugin.extract({
+              fallback: "style-loader",
+              use: "css-loader"
+            })
+          },
+          { test: /\.less$/, 
+            use:ExtractTextPlugin.extract({
+              fallback: "style-loader",
+              use: "css-loader!less-loader"
+            })
+          },
+        ],
     },
+    plugins: [
+        new ExtractTextPlugin({
+            filename:"style.[contenthash:16].css"
+        }),
+    ],
 };

@@ -9,6 +9,7 @@ let serverIPAddress = common.getIPAdress();
 let serverPort = 9090 ;
 let publicPath = path.resolve(__dirname, '../public') ;
 const commonConfig = require('./base.js');
+let assetsPath = common.getAssetsPath() ;
 
 module.exports = webpackMerge(commonConfig, {
     devtool: "source-map",
@@ -35,7 +36,7 @@ module.exports = webpackMerge(commonConfig, {
         }),
         new webpack.HotModuleReplacementPlugin(), // Enable HMR
         new HtmlWebpackPlugin({
-            template: common.getContextPath() +'/src/template.html',
+            template: assetsPath +'/template.html',
             filename:'index.html',
             inject:'body',
             chunks:['index']   // 这个模板对应上面那个节点

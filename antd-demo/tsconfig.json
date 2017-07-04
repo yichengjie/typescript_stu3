@@ -1,16 +1,28 @@
 {
     "compilerOptions": {
-        "outDir": "./dist/",
-        "sourceMap": true,
+        "outDir": "./scripts/es6/",
         "noImplicitAny": true,
-        "module": "commonjs",
-        "target": "es5",
-        "allowJs":true,
         "moduleResolution": "node",
-        "jsx": "react",
-        "allowSyntheticDefaultImports": true
+        "target": "es6",
+        "jsx": "preserve",
+        "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true
     },
     "include": [
-        "./src/**/*"
+        "./scripts/ts/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
     ]
 }
+// "outDir": "./es/",
+// "strictNullChecks": true,
+//"module": "commonjs",
+// "moduleResolution": "node",
+// "allowSyntheticDefaultImports": true,
+// "experimentalDecorators": true,
+// "jsx": "preserve",
+// "noUnusedParameters": true,
+// "noUnusedLocals": true,
+// "target": "es6"
