@@ -20,7 +20,8 @@
     },
     "homepage": "https://github.com/yichengjie/typescript_stu3#readme",
     "dependencies": {
-        "@types/node": "^8.0.7",
+        "@types/lodash": "^4.14.68",
+        "@types/prop-types": "^15.5.1",
         "@types/react": "^15.0.34",
         "@types/react-dom": "^15.5.1",
         "antd": "^2.11.2",
@@ -30,6 +31,7 @@
         "react-dom": "^15.6.1"
     },
     "devDependencies": {
+        "@types/classnames": "^2.2.0",
         "@types/react-hot-loader": "next",
         "babel-core": "^6.25.0",
         "babel-loader": "^7.1.1",
