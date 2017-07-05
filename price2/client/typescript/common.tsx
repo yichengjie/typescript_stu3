@@ -1,5 +1,6 @@
-import React from 'react' ;
-import ReactDOM from 'react-dom';
+import * as React from 'react' ;
+//import * as React from 'react' ;
+import * as ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader'
 import '../assets/styles/index.less' ; 
  

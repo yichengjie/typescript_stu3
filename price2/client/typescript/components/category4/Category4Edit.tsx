@@ -1,4 +1,4 @@
-import React,{Component} from 'react' ;
+import * as React from 'react' ;
 import FlightInfoContainer from './FlightInfoContainer' ;
 import moment from 'moment';
 import _ from 'lodash' ;
@@ -44,7 +44,7 @@ interface Category4EditProps{
 
 }
 
-class Category4Edit extends Component <Category4EditProps,any>{
+class Category4Edit extends React.Component <Category4EditProps,any>{
     constructor(props:Category4EditProps){
         super(props) ;
         let id = getQueryString('id') ;
@@ -161,7 +161,7 @@ class Category4Edit extends Component <Category4EditProps,any>{
     //添加航班信息
     handleAddFlightInfo = (e:any) => {
         let retObj = this.assembleFlightInfoObjByFormData() ;
-        let {flightType,flightNoType} = retObj ;
+        let {flightType} = retObj ;
         if(flightType === '1'){//去程信息
             let flightList1 = [...this.state.flightList1] ;
             flightList1.push(retObj) ;
@@ -190,7 +190,6 @@ class Category4Edit extends Component <Category4EditProps,any>{
     }
 
     render(){
-        let {flightInfo} = this.state ;
         let gbfp = this.getBaseInfoFieldProps;
         let gffp = this.getFlightInfoFieldProps;
         return (
@@ -323,7 +322,7 @@ interface ApplyTimeRangeListProps{
 }
 
 
-class ApplyTimeRangeList extends Component <ApplyTimeRangeListProps,any>{
+class ApplyTimeRangeList extends React.Component <ApplyTimeRangeListProps,any>{
     handleChangeList = (newItemValue:any,index:number) => {
         let {onChange,value} = this.props ;
         let newValue = [...value] ;
@@ -337,7 +336,7 @@ class ApplyTimeRangeList extends Component <ApplyTimeRangeListProps,any>{
         onChange(newValue) ;
     }
     renderAllGroup(){
-        let {value,onChange,startFieldName,endFieldName} = this.props ;
+        let {value} = this.props ;
         let retObj = null ;
         let list = value ;
         if(list && list.length > 0){
@@ -374,7 +373,7 @@ interface ApplyTimeRangeItemProps{
 
 
 
-class ApplyTimeRangeItem extends Component<ApplyTimeRangeItemProps,any>{
+class ApplyTimeRangeItem extends React.Component<ApplyTimeRangeItemProps,any>{
     static defaultProps = {
         startFieldName:'start',
         endFieldName:'end',

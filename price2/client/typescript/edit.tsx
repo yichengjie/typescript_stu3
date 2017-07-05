@@ -1,5 +1,4 @@
 declare var module: any ;
-import React from 'react';
 import Category4EditApp from './components/category4/Category4Edit' ;
 import {createAppNode,render} from './common' ;
 

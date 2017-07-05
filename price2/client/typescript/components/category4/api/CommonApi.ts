@@ -1,6 +1,6 @@
 //let axios = require('axios') ;
 declare var axios: any ;
-import commom from '../../common.js' ;
+import commom from '../../common' ;
 
 //查询category4数据
 export async function queryAllCategory4(){

@@ -1,8 +1,7 @@
-import React from 'react' ;
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
-const { Header, Content, Footer, Sider } = Layout;
+import * as React from 'react' ;
+import { Layout, Menu, Icon } from 'antd';
+const {Content, Footer, Sider } = Layout;
 const SubMenu = Menu.SubMenu ;
-const defaultOpenKey = "rule" ;
 
 interface SiderbarProps{
   current:string ;

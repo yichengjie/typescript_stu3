@@ -1,5 +1,4 @@
-import React,{Component,PureComponent} from 'react' ;
-import PropTypes from 'prop-types' ; 
+import * as React from 'react' ;
 import {Tooltip} from 'antd'; 
 interface EllipsisProps{
     width?:number ;

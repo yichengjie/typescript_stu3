@@ -1,10 +1,10 @@
-import React,{Component,PureComponent} from 'react' ;
+import * as React from 'react' ;
 import {Icon} from 'antd' ;
 import classNames from 'classnames' ;
-import Ellipsis from '../Ellipsis.jsx' ;
+import Ellipsis from '../Ellipsis' ;
 import PropTypes from 'prop-types' ;
-import {joinArr2Str} from '../common.js' ;
-import {FlightInfoMap} from './other/common.js' ;
+import {joinArr2Str} from '../common' ;
+import {FlightInfoMap} from './other/common' ;
 
 let tdWidthArr = [70,120,170,80,100,200,60] ;
 
@@ -43,7 +43,7 @@ interface FlightInfoContainerStates{
 }
 
 
-class FlightInfoContainer extends PureComponent<FlightInfoContainerProps,FlightInfoContainerStates>{
+class FlightInfoContainer extends React.PureComponent<FlightInfoContainerProps,FlightInfoContainerStates>{
 
     constructor(props:FlightInfoContainerProps){
         super(props) ;
@@ -163,8 +163,7 @@ interface FlightInfoProps{
 
 
 
-
-class FlightInfo extends PureComponent<FlightInfoProps,any>{
+class FlightInfo extends React.PureComponent<FlightInfoProps,any>{
     constructor(props:FlightInfoProps){
         super(props) ;//defaultShowOperBtn
         let {defaultShowAllRecord,defaultShowOperBtn} = this.props ;
@@ -262,7 +261,6 @@ class FlightInfo extends PureComponent<FlightInfoProps,any>{
     }
 
     filterList(){
-        let arr = [] ;
         let list = this.props.list ;
         let {show5Record,showAllRecord} = this.state ;
         if(list == null || list.length <= 3){
