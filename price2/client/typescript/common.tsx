@@ -11,10 +11,10 @@ export function createAppNode(){
     return appNode ;
 }
 
-export const render = (Component:any,appNode:any) => {
+export const render = (WrapComponent:any,appNode:any) => {
   ReactDOM.render(
     <AppContainer>
-      <Component />
+      <WrapComponent />
     </AppContainer>,
     appNode
   )
