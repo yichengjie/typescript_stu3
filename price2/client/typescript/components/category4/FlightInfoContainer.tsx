@@ -30,12 +30,12 @@ export function getFlightNoIconByValue(flightNoType:string){
 }
 
 interface FlightInfoContainerProps{
-    defaultShowOperBtn:boolean;
-    defaultShowAllRecord:boolean;
-    flightList1:any ;
-    flightList2:any ;
-    onDelete:Function ;
-    onModify:Function ;
+    defaultShowOperBtn?:boolean;
+    defaultShowAllRecord?:boolean;
+    flightList1:Array<object> ;
+    flightList2:Array<object> ;
+    onDelete?:Function ;
+    onModify?:Function ;
 }
 
 interface FlightInfoContainerStates{
@@ -99,7 +99,8 @@ class FlightInfoContainer extends PureComponent<FlightInfoContainerProps,FlightI
                     defaultShowOperBtn={showOperBtn}
                     defaultShowAllRecord={defaultShowAllRecord}
                 />
-                <FlightInfo label="回程航班" 
+                <FlightInfo 
+                    label="回程航班" 
                     name='flightList2'
                     list = {flightList2}
                     onDelete={onDelete}
@@ -149,14 +150,19 @@ function getShowInfoObj(item:any){
 
 
 interface FlightInfoProps{
-    defaultShowAllRecord:boolean ;
-    defaultShowOperBtn:boolean ;
-    name:string;
-    showOperBtn:boolean ;
-    list:Array<Object>;
-    splitLine:boolean ;
+    defaultShowAllRecord?:boolean ;
+    defaultShowOperBtn?:boolean ;
     label:string;
+    name:string;
+    showOperBtn?:boolean ;//显示操作列按钮
+    list:Array<Object>;
+    splitLine?:boolean ; //显示分割线
+    onDelete:Function;
+    onModify:Function ;
 }
+
+
+
 
 class FlightInfo extends PureComponent<FlightInfoProps,any>{
     constructor(props:FlightInfoProps){
@@ -170,10 +176,11 @@ class FlightInfo extends PureComponent<FlightInfoProps,any>{
     }
 
     handleChangeShowHideFactory(fieldName:string){
-        let otherKeyMap = {
-           "show5Record":"showAllRecord" ,
-           "showAllRecord":"show5Record"
+        let otherKeyMap:{[index:string]: string;} = {
+            "show5Record":"showAllRecord" ,
+            "showAllRecord":"show5Record"
         } ;
+        
         return function(){
             let otherKey = otherKeyMap[fieldName] ;
 
@@ -195,17 +202,17 @@ class FlightInfo extends PureComponent<FlightInfoProps,any>{
     
 
     handleDeleteOprFactory(index:number){
-        let {name} = this.props ;
+        let {name,onDelete} = this.props ;
         return function(){
-            this.props.onDelete(name,index) ;
-        }.bind(this) ;
+            onDelete(name,index) ;
+        } ;
     }
 
     handleModifyOperFactory(index:number){
-        let {name} = this.props ;
+        let {name,onModify} = this.props ;
         return function(){
-            this.props.onModify(name,index) ;
-        }.bind(this) ;
+            onModify(name,index) ;
+        } ;
     }
     //显示操作列的td
     renderOperTd(index:number){
@@ -313,14 +320,14 @@ class FlightInfo extends PureComponent<FlightInfoProps,any>{
     }
 
     render(){
-        let {splitLine,list=[]} = this.props ;
+        let {splitLine,list=[],label} = this.props ;
         let splitLineClassName = classNames('content-split-line',{
             'mt30':list.length == 0
         }) ;
         return (
             <div className="content">
                 <div className="content-left">
-                    <span className="content-left-title">{this.props.label}</span>
+                    <span className="content-left-title">{label}</span>
                 </div>
                 <div className="content-right">
                     <table>

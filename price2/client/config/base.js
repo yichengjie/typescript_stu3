@@ -9,13 +9,16 @@ module.exports = {
     entry:{
         index:[
             'react-hot-loader/patch',
-            './entrys/index.jsx'
+            './index.jsx'
         ] ,
         edit:[
             'react-hot-loader/patch',
-            './entrys/edit.jsx'
+            './edit.jsx'
         ],
         vendor: ['react','react-dom','moment','lodash'], 
+    },
+    resolve: {
+        extensions: [".js", ".jsx", ".json"]
     },
     module: {
       rules: [

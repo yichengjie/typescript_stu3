@@ -4,12 +4,19 @@ const { Header, Content, Footer, Sider } = Layout;
 const SubMenu = Menu.SubMenu ;
 const defaultOpenKey = "rule" ;
 
-class Siderbar extends React.Component {
+interface SiderbarProps{
+  current:string ;
+  openKeys:any ;
+}
+
+class Siderbar extends React.Component <SiderbarProps,any>{
   static defaultProps = {
      current:'',
-     openKeys:[]
+    //  openKeys:[],
   } ;
-  constructor(props){
+  openKeys:Array<any> ;
+
+  constructor(props:SiderbarProps){
      super(props) ;
      this.state = {
        current:props.current,
@@ -19,21 +26,21 @@ class Siderbar extends React.Component {
      }
   }
 
-  handleMenuItemClick = (e) => {
+  handleMenuItemClick = (e:any) => {
     this.setState({
       current: e.key,
     });
   }
 
-  handleMenuOpenChange = (openKeys) =>{
+  handleMenuOpenChange = (openKeys:any) =>{
       this.setState({
         openKeys   
       }) ;
   }
 
-  onCollapse = (collapsed) => {
+  onCollapse = (collapsed:boolean) => {
     console.log(`collapsed :${collapsed}`);
-    let {openKeys} = [] ;
+    let openKeys:any = [] ;
     if(collapsed){//如果是折叠
         this.openKeys = [...this.state.openKeys] ;
         openKeys = [] ;
@@ -49,7 +56,8 @@ class Siderbar extends React.Component {
   render() {
     let {openKeys} = this.state;
     return (
-      <Layout style={{height:'100%'}} id="components-layout-demo-side">
+      <div id="components-layout-demo-side">
+      <Layout style={{height:'100%'}} >
         <Sider 
           width="150"
           collapsible
@@ -101,6 +109,7 @@ class Siderbar extends React.Component {
           </Footer>
         </Layout>
       </Layout>
+      </div>
     );
   }
 }

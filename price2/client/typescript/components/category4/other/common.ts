@@ -1,4 +1,4 @@
-export let FlightInfoMap = {
+export let FlightInfoMap:{[index:string]:any} = {
    modelType:{
      '':'不限',
      '1':'适用',
@@ -35,7 +35,7 @@ export let FlightInfoMap = {
     * @param {*} item 键值对，如:{modelType:'1'}
     * @param {*} name 获取字段的名称,如:modelType
     */
-   getTypeShowStr(item,name){
+   getTypeShowStr(item:any,name:string){
        if(item == null){
           return '' ;
        }

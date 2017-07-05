@@ -7,7 +7,14 @@ import {FlightInfoMap} from './other/common' ;
 import Siderbar from '../Siderbar' ;
 
 interface Category4QueryState { 
-   list:any
+   list:{[index:string]:any};
+}
+
+
+interface ListItemProps{
+    list1:Array<object> ;
+    list2:Array<object> ;
+    basicInfo:object;
 }
 
 class Category4Query extends React.Component<Object,Category4QueryState> {
@@ -53,7 +60,7 @@ class Category4Query extends React.Component<Object,Category4QueryState> {
         window.location.href = url ;
     }
 
-    renderListItem(item:any,key:any,index:any,count:any){
+    renderListItem(item:ListItemProps,key:string,index:number,count:number){
         return (
             <div className="category-section-row mb20" key={key}>
                 <ListItemTitle
@@ -64,7 +71,7 @@ class Category4Query extends React.Component<Object,Category4QueryState> {
                     onDelete={this.handleDeleteItem}
                     onModify={this.handleToModifyUI}/>
                 <FlightInfoContainer
-                    flightList1 ={item.list1}
+                    flightList1={item.list1}
                     flightList2 ={item.list2}
                 />
             </div>

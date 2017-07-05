@@ -32,7 +32,7 @@ export function dealProjectUrl(url:string){
     return contextPath + url ;
 }
 
-export function joinArr2Str(arr:Array<any>,splitStr:string){
+export function joinArr2Str(arr:Array<any>,splitStr?:string){
     if(arr == null || arr.length == 0){
         return '' ;
     }

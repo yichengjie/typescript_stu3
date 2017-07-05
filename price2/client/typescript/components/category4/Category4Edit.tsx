@@ -1,10 +1,10 @@
-import  React,{Component} from 'react' ;
-import FlightInfoContainer from './FlightInfoContainer.jsx' ;
+import React,{Component} from 'react' ;
+import FlightInfoContainer from './FlightInfoContainer' ;
 import moment from 'moment';
 import _ from 'lodash' ;
-import {queryCategory4ById} from './api/CommonApi.js' ;
-import {getQueryString,dealProjectUrl} from '../common.js' ;
-import Siderbar from '../Siderbar.jsx' ;
+import {queryCategory4ById} from './api/CommonApi' ;
+import {getQueryString,dealProjectUrl} from '../common' ;
+import Siderbar from '../Siderbar' ;
 
 import {Select,Input,Radio,Checkbox,Icon,Button,
     TimePicker,message} from 'antd';
@@ -14,7 +14,7 @@ const RadioButton = Radio.Button;
 const CheckboxGroup = Checkbox.Group;
 const format = 'HH:mm';
 
-function CategorySection (props){
+function CategorySection (props:any){
     return (
         <div className="category-section-title">
             <span className="title">{props.children}</span>
@@ -33,15 +33,19 @@ const options = [
 ];
 
 
-function getChangeValue(event){
+function getChangeValue(event:any){
     if(event && event.target){
         return event.target.value ;
     }
     return event ;
 }
 
-class Category4Edit extends Component {
-    constructor(props){
+interface Category4EditProps{
+
+}
+
+class Category4Edit extends Component <Category4EditProps,any>{
+    constructor(props:Category4EditProps){
         super(props) ;
         let id = getQueryString('id') ;
         console.info('id : ' , id) ;
@@ -94,19 +98,19 @@ class Category4Edit extends Component {
         return retObj ;
     }
 
-    handleBaseInfoChangeFactory(fieldName){
+    handleBaseInfoChangeFactory(fieldName:string){
         let formDataName = "basicInfo" ;
         return this._handleFormDataChange(fieldName,formDataName) ;
     }
 
-    handleFlightInfoChangeFactory(fieldName){
+    handleFlightInfoChangeFactory(fieldName:string){
         let formDataName = "flightInfo" ;
         return this._handleFormDataChange(fieldName,formDataName) ;
     }
 
-    _handleFormDataChange(fieldName,formDataName){
+    _handleFormDataChange(fieldName:string,formDataName:string){
         let formData = this.state[formDataName] ;
-        return (event) => {
+        return (event:any) => {
             let value = getChangeValue(event) ;
             //星期天需要排序
             this.delFlightApplyWeek(fieldName,value) ;
@@ -116,7 +120,7 @@ class Category4Edit extends Component {
     }
 
     //星期天需要从大到小进行排序
-    delFlightApplyWeek(fieldName,value){
+    delFlightApplyWeek(fieldName:string,value:Array<number>){
         if(fieldName === 'flightApplyWeek' && value && value.length > 1){
             value.sort(function(a,b){
                 return a - b
@@ -125,7 +129,7 @@ class Category4Edit extends Component {
         return value ;
     }
     //基础表单信息
-    getBaseInfoFieldProps = (fieldName) => {
+    getBaseInfoFieldProps = (fieldName:string) => {
         let formDataName = "basicInfo" ;
         let formData = this.state[formDataName] ;
         let value = formData[fieldName] ;
@@ -133,7 +137,7 @@ class Category4Edit extends Component {
         return {value,onChange} ;
     }
     //航班号表单信息
-    getFlightInfoFieldProps = (fieldName) => {
+    getFlightInfoFieldProps = (fieldName:string) => {
         let formDataName = "flightInfo" ;
         let formData = this.state[formDataName] ;
         let value = formData[fieldName] ;
@@ -155,7 +159,7 @@ class Category4Edit extends Component {
     }
 
     //添加航班信息
-    handleAddFlightInfo = (e) => {
+    handleAddFlightInfo = (e:any) => {
         let retObj = this.assembleFlightInfoObjByFormData() ;
         let {flightType,flightNoType} = retObj ;
         if(flightType === '1'){//去程信息
@@ -169,13 +173,13 @@ class Category4Edit extends Component {
         }
     }
 
-    handeleDeleteFlightInfo = (name,index) => {
+    handeleDeleteFlightInfo = (name:string,index:number) => {
         let newList = [...this.state[name]] ;
         newList.splice(index,1) ;
         this.setState({[name]:newList}) ;
     }
 
-    handleModifyFlightInfo = (name,index) =>{
+    handleModifyFlightInfo = (name:string,index:number) =>{
         let obj = _.cloneDeep(this.state[name][index] );
         this.setState({flightInfo:obj}) ;
     }
@@ -228,8 +232,7 @@ class Category4Edit extends Component {
                     </RadioGroup>
 
                     <span className="float-right">
-                        <Button type="default"
-                                onClick={this.handleAddFlightInfo}>新加
+                        <Button onClick={this.handleAddFlightInfo}>新加
                         </Button>
                     </span>
                 </div>
@@ -305,22 +308,29 @@ class Category4Edit extends Component {
 
 
 
-function getFormatDateStr(str){
+function getFormatDateStr(str:string){
     if(str && str.length > 0 ){
         return moment(str, format) ;
     }
     return  null;
 }
 
+interface ApplyTimeRangeListProps{
+    onChange:Function ;
+    value:Array<any> ;
+    startFieldName?:string ;
+    endFieldName?:string ;
+}
 
-class ApplyTimeRangeList extends Component {
-    handleChangeList = (newItemValue,index) => {
+
+class ApplyTimeRangeList extends Component <ApplyTimeRangeListProps,any>{
+    handleChangeList = (newItemValue:any,index:number) => {
         let {onChange,value} = this.props ;
         let newValue = [...value] ;
         newValue[index] = newItemValue ;
         onChange(newValue) ;
     }
-    handleDelete = (index) => {
+    handleDelete = (index:number) => {
         let {onChange,value} = this.props ;
         let newValue = [...value] ;
         newValue.splice(index,1) ;
@@ -353,20 +363,30 @@ class ApplyTimeRangeList extends Component {
     }
 }
 
+interface ApplyTimeRangeItemProps{
+    startFieldName?:string;
+    endFieldName?:string ;
+    onDelete?:Function;
+    onChange:Function;
+    index:number ;
+    value:any;
+}
 
-class ApplyTimeRangeItem extends Component{
+
+
+class ApplyTimeRangeItem extends Component<ApplyTimeRangeItemProps,any>{
     static defaultProps = {
         startFieldName:'start',
         endFieldName:'end',
-        handleDelete:()=>{}
+        onDelete:()=>{}
     } ;
     handleDelete = () => {
         let index = this.props.index ;
         this.props.onDelete(index) ;
     }
-    handleChangeFactory(fieldName){
+    handleChangeFactory(fieldName:string){
         let {value,index} = this.props ;
-        return (time,timeStr) => {
+        return (time:any,timeStr:string) => {
             let newValue = Object.assign({},value,{[fieldName]:timeStr}) ;
             this.props.onChange(newValue,index) ;
         } ;
@@ -378,14 +398,14 @@ class ApplyTimeRangeItem extends Component{
         return (
             <span className="mr20 category-input-list-item">
                 <TimePicker  style={{width:'90px'}}
-                             value = {getFormatDateStr(startFieldValue)}
-                             onChange={this.handleChangeFactory(startFieldName)}
-                             format={format}  />
+                    value = {getFormatDateStr(startFieldValue)}
+                    onChange={this.handleChangeFactory(startFieldName)}
+                    format={format}  />
                 <span className="mlr5">-</span>
                 <TimePicker  style={{width:'90px'}}
-                             value={getFormatDateStr(endFieldValue)}
-                             onChange={this.handleChangeFactory(endFieldName)}
-                             format={format} />
+                    value={getFormatDateStr(endFieldValue)}
+                    onChange={this.handleChangeFactory(endFieldName)}
+                    format={format} />
                 <Icon type="delete" className="hand ml5"
                       onClick={this.handleDelete} />
             </span>
