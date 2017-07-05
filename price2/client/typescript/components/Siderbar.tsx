@@ -55,8 +55,7 @@ class Siderbar extends React.Component <SiderbarProps,any>{
   render() {
     let {openKeys} = this.state;
     return (
-      <div id="components-layout-demo-side">
-      <Layout style={{height:'100%'}} >
+      <Layout style={{height:'100%'}} className="components-layout-demo-side" >
         <Sider 
           width="150"
           collapsible
@@ -108,7 +107,6 @@ class Siderbar extends React.Component <SiderbarProps,any>{
           </Footer>
         </Layout>
       </Layout>
-      </div>
     );
   }
 }

@@ -8,7 +8,7 @@ import {FlightInfoMap} from './other/common' ;
 
 let tdWidthArr = [70,120,170,80,100,200,60] ;
 
-function getItemWidth(index:number,showOperBtn:boolean,unit:boolean){
+function getItemWidth(index:number,showOperBtn:boolean = false,unit:boolean = true){
     let w = tdWidthArr[index] ;
     let t = showOperBtn ? w : (w + 10) ;
     let tmp = unit ? (t + 'px') : t ;
@@ -47,14 +47,16 @@ class FlightInfoContainer extends React.PureComponent<FlightInfoContainerProps,F
 
     constructor(props:FlightInfoContainerProps){
         super(props) ;
-        let {defaultShowOperBtn} = props ;
+        let {defaultShowOperBtn = true} = props ;
         this.state = {
             showOperBtn:defaultShowOperBtn
         } ;
     }
     static defaultProps = {
         defaultShowOperBtn:false,
-        defaultShowAllRecord:false
+        defaultShowAllRecord:false,
+        onDelete:()=>{},
+        onModify:()=>{}
     };
     static propTypes = {
         defaultShowOperBtn:PropTypes.bool,
@@ -157,8 +159,8 @@ interface FlightInfoProps{
     showOperBtn?:boolean ;//显示操作列按钮
     list:Array<Object>;
     splitLine?:boolean ; //显示分割线
-    onDelete:Function;
-    onModify:Function ;
+    onDelete?:Function;
+    onModify?:Function ;
 }
 
 
@@ -196,6 +198,8 @@ class FlightInfo extends React.PureComponent<FlightInfoProps,any>{
                     [otherKey]:false
                 } ;
             }.bind(this)) ;
+            //这里return true有什么用么？
+            return true ;
         }.bind(this) ;
     }
     
@@ -203,14 +207,14 @@ class FlightInfo extends React.PureComponent<FlightInfoProps,any>{
     handleDeleteOprFactory(index:number){
         let {name,onDelete} = this.props ;
         return function(){
-            onDelete(name,index) ;
+            onDelete && onDelete(name,index) ;
         } ;
     }
 
     handleModifyOperFactory(index:number){
         let {name,onModify} = this.props ;
         return function(){
-            onModify(name,index) ;
+            onModify && onModify(name,index) ;
         } ;
     }
     //显示操作列的td

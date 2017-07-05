@@ -307,11 +307,11 @@ class Category4Edit extends React.Component <Category4EditProps,any>{
 
 
 
-function getFormatDateStr(str:string){
+function getFormatDateStr(str:string) : moment.Moment | undefined{
     if(str && str.length > 0 ){
         return moment(str, format) ;
     }
-    return  null;
+    return  undefined;
 }
 
 interface ApplyTimeRangeListProps{
@@ -366,7 +366,7 @@ interface ApplyTimeRangeItemProps{
     startFieldName?:string;
     endFieldName?:string ;
     onDelete?:Function;
-    onChange:Function;
+    onChange?:Function;
     index:number ;
     value:any;
 }
@@ -380,18 +380,18 @@ class ApplyTimeRangeItem extends React.Component<ApplyTimeRangeItemProps,any>{
         onDelete:()=>{}
     } ;
     handleDelete = () => {
-        let index = this.props.index ;
-        this.props.onDelete(index) ;
+        let {index,onDelete} = this.props ;
+        onDelete && onDelete(index) ;
     }
     handleChangeFactory(fieldName:string){
-        let {value,index} = this.props ;
+        let {value,index,onChange} = this.props ;
         return (time:any,timeStr:string) => {
             let newValue = Object.assign({},value,{[fieldName]:timeStr}) ;
-            this.props.onChange(newValue,index) ;
+            onChange && onChange(newValue,index) ;
         } ;
     }
     render(){
-        let {startFieldName,endFieldName,value} = this.props ;
+        let {startFieldName = 'start',endFieldName = 'end',value} = this.props ;
         let startFieldValue = value[startFieldName] ;
         let endFieldValue = value[endFieldName] ;
         return (
