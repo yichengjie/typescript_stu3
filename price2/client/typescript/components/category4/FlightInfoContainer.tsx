@@ -1,6 +1,6 @@
 import * as React from 'react' ;
 import {Icon} from 'antd' ;
-import classNames from 'classnames' ;
+import * as classNames from 'classnames' ;
 import Ellipsis from '../Ellipsis' ;
 import PropTypes from 'prop-types' ;
 import {joinArr2Str} from '../common' ;
