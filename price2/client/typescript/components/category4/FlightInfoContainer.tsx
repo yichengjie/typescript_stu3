@@ -32,8 +32,8 @@ export function getFlightNoIconByValue(flightNoType:string){
 interface FlightInfoContainerProps{
     defaultShowOperBtn?:boolean;
     defaultShowAllRecord?:boolean;
-    flightList1:Array<object> ;
-    flightList2:Array<object> ;
+    flightList1?:Array<object> ;
+    flightList2?:Array<object> ;
     onDelete?:Function ;
     onModify?:Function ;
 }
@@ -157,7 +157,7 @@ interface FlightInfoProps{
     label:string;
     name:string;
     showOperBtn?:boolean ;//显示操作列按钮
-    list:Array<Object>;
+    list?:Array<Object>;
     splitLine?:boolean ; //显示分割线
     onDelete?:Function;
     onModify?:Function ;
@@ -174,6 +174,10 @@ class FlightInfo extends React.PureComponent<FlightInfoProps,any>{
             showAllRecord:defaultShowAllRecord,
             showOperBtn:defaultShowOperBtn
         } ;
+    }
+
+    static defaultProps = {
+       list:[] 
     }
 
     handleChangeShowHideFactory(fieldName:string){

@@ -14,7 +14,11 @@ const RadioButton = Radio.Button;
 const CheckboxGroup = Checkbox.Group;
 const format = 'HH:mm';
 
-function CategorySection (props:any){
+interface CategorySectionProps{
+    children:string;
+}
+
+function CategorySection (props:CategorySectionProps){
     return (
         <div className="category-section-title">
             <span className="title">{props.children}</span>
@@ -40,13 +44,18 @@ function getChangeValue(event:any){
     return event ;
 }
 
-interface Category4EditProps{
-
+interface Category4EditState{
+    id?:string ; 
+    basicInfo?:any ; 
+    flightInfo?:any ;
+    flightList1?:Array<object> ;
+    flightList2?:Array<object>
 }
 
-class Category4Edit extends React.Component <Category4EditProps,any>{
-    constructor(props:Category4EditProps){
-        super(props) ;
+
+class Category4Edit extends React.Component <any,Category4EditState>{
+    constructor(){
+        super() ;
         let id = getQueryString('id') ;
         console.info('id : ' , id) ;
         this.state = {
@@ -162,14 +171,16 @@ class Category4Edit extends React.Component <Category4EditProps,any>{
     handleAddFlightInfo = (e:any) => {
         let retObj = this.assembleFlightInfoObjByFormData() ;
         let {flightType} = retObj ;
+        let {flightList1 = [],flightList2 = []} = this.state ;
+        let newFlightList = [] ;
         if(flightType === '1'){//去程信息
-            let flightList1 = [...this.state.flightList1] ;
-            flightList1.push(retObj) ;
-            this.setState({flightList1}) ;
+            newFlightList = [...flightList1] ;
+            newFlightList.push(retObj) ;
+            this.setState({flightList1:newFlightList}) ;
         }else{
-            let flightList2 = [...this.state.flightList2] ;
-            flightList2.push(retObj) ;
-            this.setState({flightList2}) ;
+            newFlightList = [...flightList2] ;
+            newFlightList.push(retObj) ;
+            this.setState({flightList2:newFlightList}) ;
         }
     }
 

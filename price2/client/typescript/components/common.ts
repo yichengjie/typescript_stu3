@@ -1,15 +1,15 @@
 import _ from 'lodash' ;
 
-export function getQueryString(name:string) { 
+export function getQueryString(name:string):string { 
     let searchStr = window.location.search ;
     return __getQueryStringBySearchStr(name,searchStr) ;
 }  
 //从给定的
-function __getQueryStringBySearchStr(name:string,searchStr:string) { 
+function __getQueryStringBySearchStr(name:string,searchStr:string):string { 
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
     var r = searchStr.substr(1).match(reg); 
     if (r != null) return _.unescape(r[2]); 
-    return null; 
+    return ''; 
 }
 
 function getContextPath(){
