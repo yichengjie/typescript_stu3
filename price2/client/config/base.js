@@ -51,5 +51,6 @@ module.exports = {
       new ExtractTextPlugin({
         filename:"style.[contenthash:16].css"
       }),
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     ],
 };
