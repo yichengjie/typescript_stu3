@@ -21,7 +21,7 @@ class Category4Query extends React.Component<any,Category4QueryState> {
         super(props) ;
         this.state = {
             list:{}
-        }
+        };
     }
     async componentDidMount(){
         let {category4Data} = await queryAllCategory4();
@@ -40,7 +40,7 @@ class Category4Query extends React.Component<any,Category4QueryState> {
         }) ;
     }
     handleDeleteItem = (id:string) => {
-        console.info(`删除的id 为 :${id}` ) ;
+        //console.info(`删除的id 为 :${id}` ) ;
         let list = {...this.state.list} ;
         delete list[id] ;
         this.setState({list}) ;
@@ -68,7 +68,8 @@ class Category4Query extends React.Component<any,Category4QueryState> {
                     count={count}
                     basicInfo={item.basicInfo}
                     onDelete={this.handleDeleteItem}
-                    onModify={this.handleToModifyUI}/>
+                    onModify={this.handleToModifyUI}
+                />
                 <FlightInfoContainer
                     flightList1={item.list1}
                     flightList2 ={item.list2}
@@ -90,11 +91,6 @@ class Category4Query extends React.Component<any,Category4QueryState> {
         ) ;
     }
 }
-
-
-
-
-
 /**
  * 列表项显示
  * @param {*} props
@@ -118,13 +114,13 @@ function ListItemTitle (props:ListItemTitleProps){
     let {id,basicInfo,index,count,onModify,onDelete} = props ;
     return (
         <div className="category-flight-info-descr">
-            <span className="mlr20">{(index + 1) + '/' + count }</span>
-            <span className="mlr20"></span>
+            <span className="mlr20">{(index + 1) + '/' + count}</span>
+            <span className="mlr20"/>
             <span className="mlr20">机型:</span>
             <span >{getFlightNoIconByValue(basicInfo.modelType)} </span>
             <span>{FlightInfoMap.getTypeShowStr(basicInfo,'modelType')}</span>
             <span className="mlr20">{basicInfo.modelCode} </span>
-            <span className="mlr20"></span>
+            <span className="mlr20"/>
             <span className="ml20">代码共享航班:</span>
             <span className="ml15">
                 {getFlightNoIconByValue(basicInfo.codeShareFlightType)}
@@ -132,11 +128,15 @@ function ListItemTitle (props:ListItemTitleProps){
             <span>{FlightInfoMap.getTypeShowStr(basicInfo,'codeShareFlightType')}</span>
             <span className="ml20">{basicInfo.codeShareFlightCode}</span>
             <span className="oper-section">
-                <Icon type="edit hand"
-                      onClick={ (e:any) => onModify(id)} />
-                <Icon type="delete"
-                      onClick={ (e:any) => onDelete(id)}
-                      className="ml10 hand"/>
+                <Icon 
+                      type="edit hand"
+                      onClick={(e:any) => onModify(id)} 
+                />
+                <Icon 
+                      type="delete"
+                      onClick={(e:any) => onDelete(id)}
+                      className="ml10 hand"
+                />
             </span>
         </div>
     ) ;
@@ -145,7 +145,9 @@ function ListItemTitle (props:ListItemTitleProps){
 
 function Category4QueryApp (){
     return (
-        <Siderbar current='rule-category' openKeys ={['rule']}>
+        <Siderbar 
+            current="rule-category" 
+            openKeys ={['rule']}>
             <Category4Query />
         </Siderbar>
     ) ;

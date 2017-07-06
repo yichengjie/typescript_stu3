@@ -22,6 +22,14 @@ module.exports = {
     },
     module: {
       rules: [
+        // First, run the linter.
+        // It's important to do this before Babel processes the JS.
+        {
+          test: /\.(ts|tsx)$/,
+          loader: require.resolve('tslint-loader'),
+          enforce: 'pre',
+          include: srcPath,
+        },
         {
           test: /\.tsx?$/,exclude: [/node_modules/],
           loader: "babel-loader!ts-loader"
