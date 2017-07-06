@@ -1,0 +1,134 @@
+@baseColor :#ccc ;
+.category-section-title{
+    display: block ;
+    line-height: 40px;
+    border-bottom: 1px solid @baseColor ;
+    margin-bottom: 10px;
+    .title{
+        display: inline-block ;
+        font-size: 14px;
+        font-weight: 500 ;
+    }
+}
+.category-section-row{
+    margin: 10px 0 ;
+    .label{
+        vertical-align: top ;
+    }
+    .time-add-bg{
+        display: inline-block ;
+        width: 14px;
+        margin: 5px;
+        background: @baseColor ;
+        text-align: center ;
+        border-radius: 2px ;
+        font-weight: 600;
+        line-height: 18px;
+        color:#fff ;
+        cursor: pointer ;
+    }
+}
+//分组input ，一行可以有多个，动态添加
+.category-input-list-container{
+    display: inline-block ;
+    max-width: 700px;
+    text-align: justify;
+}
+.category-input-list-item{
+    display: inline-block ;
+    margin-bottom: 5px;
+}
+
+
+.category-flight-info-descr{
+    width: 900px ;
+    position: relative;
+    line-height: 35px ;
+    background-color: @baseColor;
+    font-size: 14px;
+    .oper-section{
+        position: absolute ;
+        right: 20px;
+    }
+}
+
+
+
+/*航班信息列表相关start*/
+.category-flight-info-container{
+    @baseBoxWidth:900px;
+    @contentLeftWidth:90px;
+    display: block;
+    width: @baseBoxWidth;
+    border: 1px solid #ddd;
+    border-top: 0px ;
+    box-sizing: border-box ;
+    min-height: 100px;
+    .header{
+        display: block ;
+        line-height: 30px;
+        white-space:nowrap;  
+    }
+    .header-item{
+        display: inline-block ;
+        font-size: 14px;
+        padding: 0 5px;
+        font-weight: 600;
+    }
+
+    .content{
+        display: block ;
+        padding-top: 10px;
+    }
+    .content-left{
+        display: inline-block ;
+        box-sizing:border-box ;
+        width: @contentLeftWidth;
+        min-height: 30px;
+        vertical-align: top ;
+        text-align: center ;
+    }
+
+    .content-left-title{
+        display: inline-block ;
+        line-height: 25px;
+        background-color: @baseColor ;
+        padding: 0 10px;
+    }
+
+    .content-right{
+        display: inline-block ;
+        box-sizing:border-box ;
+        width: (@baseBoxWidth - @contentLeftWidth - 2);
+        min-height: 30px;
+        vertical-align: top ;
+        overflow-y:auto;
+    }
+
+    .content-table-show-hide{
+        width: 620px ;
+        height: 20px ;
+        line-height: 20px ;
+        margin: 0 auto ;
+        margin-bottom: 3px;
+    }
+    .content-table-show-hide-item{
+        display: inline-block ;
+        width: 190px;
+        margin-right: 2px;
+        text-align: center ;
+        color: #999 ;
+    }
+
+    .content-table-show-hide .active{
+        background-color:#ccc ;
+        color: #444 ;
+    }
+
+    .content-split-line{
+        width: 97% ;
+        border-bottom: 1px solid #ccc ;
+    }
+}
+/*航班信息列表end*/
+

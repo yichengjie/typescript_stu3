@@ -1,0 +1,41 @@
+{
+    "compileOnSave":true,
+    "compilerOptions": {
+        "outDir": "./client/ts-build",
+        "moduleResolution": "node",
+        "module":"es6",
+        //"strict":true,
+        "target": "es6",
+        "jsx": "preserve",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true,
+        "noUnusedLocals": true,
+        "noImplicitReturns": true,
+        "strictNullChecks": true,
+        "removeComments": true,
+        "suppressImplicitAnyIndexErrors":true,
+        "forceConsistentCasingInFileNames": true
+    },
+    "include": [
+        "./client/src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+    ],
+    "types": [
+        "typePatches"
+    ]
+}
+// "outDir": "./es/",
+// "strictNullChecks": true,
+//"module": "commonjs",
+// "moduleResolution": "node",
+// "allowSyntheticDefaultImports": true,
+// "experimentalDecorators": true,
+// "jsx": "preserve",
+// "noUnusedParameters": true,
+// "noUnusedLocals": true,
+// "target": "es6"

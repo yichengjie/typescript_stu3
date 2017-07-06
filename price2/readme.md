@@ -1,0 +1,2 @@
+- 使用tsc编译typescript到jsx
+- 使用webpack编译步骤1中编译好jsx生成最终es5资源
