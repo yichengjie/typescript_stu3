@@ -186,7 +186,7 @@ class FlightInfo extends React.PureComponent<FlightInfoProps,any>{
             "showAllRecord":"show5Record"
         } ;
         
-        return function(){
+        return () => {
             let otherKey = otherKeyMap[fieldName] ;
 
             let otherValue = this.state[otherKey] ;
@@ -204,7 +204,7 @@ class FlightInfo extends React.PureComponent<FlightInfoProps,any>{
             }.bind(this)) ;
             //这里return true有什么用么？
             return true ;
-        }.bind(this) ;
+        };
     }
     
 
@@ -288,9 +288,9 @@ class FlightInfo extends React.PureComponent<FlightInfoProps,any>{
         let arr:Array<any> = [] ;
         let list = this.filterList() ;
         if(list !=null && list.length > 0){
-            arr = list.map(function(item:any,index:number){
+            arr = list.map((item:any,index:number) => {
                 return this.renderTr(item,index) ;
-            }.bind(this)) ;
+            }) ;
         }
         return <tbody>{arr}</tbody> ;
     }

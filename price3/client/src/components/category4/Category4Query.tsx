@@ -10,15 +10,14 @@ interface Category4QueryState {
    list:{[index:string]:any};
 }
 
-
 interface ListItemProps{
     list1:Array<object> ;
     list2:Array<object> ;
     basicInfo:object;
 }
 
-class Category4Query extends React.Component<Object,Category4QueryState> {
-    constructor(props:Object){
+class Category4Query extends React.Component<any,Category4QueryState> {
+    constructor(props:any){
         super(props) ;
         this.state = {
             list:{}
@@ -35,10 +34,10 @@ class Category4Query extends React.Component<Object,Category4QueryState> {
         let list = this.state.list ;
         let keys = Object.keys(list) ;
         let count = keys.length ;
-        return keys.map(function(key:string,index:number){
+        return keys.map((key:string,index:number) =>{
             let item = list[key] ;
             return this.renderListItem(item,key,index,count) ;
-        }.bind(this)) ;
+        }) ;
     }
     handleDeleteItem = (id:string) => {
         console.info(`删除的id 为 :${id}` ) ;
@@ -134,9 +133,9 @@ function ListItemTitle (props:ListItemTitleProps){
             <span className="ml20">{basicInfo.codeShareFlightCode}</span>
             <span className="oper-section">
                 <Icon type="edit hand"
-                      onClick={e => onModify(id)} />
+                      onClick={ (e:any) => onModify(id)} />
                 <Icon type="delete"
-                      onClick={e => onDelete(id)}
+                      onClick={ (e:any) => onDelete(id)}
                       className="ml10 hand"/>
             </span>
         </div>
