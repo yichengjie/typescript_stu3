@@ -6,13 +6,13 @@ import commom from '../../common' ;
 export async function queryAllCategory4(){
     let url = '/api/queryAllCategory4' ;
     url = commom.dealProjectUrl(url);
-    let response = await axios.get(url) ;
-    let {flag,data} =  response.data ;
+    const response = await axios.get(url) ;
+    const {flag,data} =  response.data ;
 
-    let category4Data = {} ;
+    const category4Data = {} ;
     data.forEach(function (item:any) {
-        let {list1,list2,id,...basicInfo} = item ;
-        let tmpObj = {[id]:{list1,list2,basicInfo}};
+        const {list1,list2,id,...basicInfo} = item ;
+        const tmpObj = {[id]:{list1,list2,basicInfo}};
         Object.assign(category4Data,tmpObj) ;
     }) ;
     return {flag,category4Data} ;
@@ -22,11 +22,11 @@ export async function queryAllCategory4(){
 export async function queryCategory4ById(paramId:string){
     let url = '/api/queryCategory4ById?id='+paramId ;
     url = commom.dealProjectUrl(url);
-    let response = await axios.get(url);
-    let {flag,data} =  response.data ;
+    const response = await axios.get(url);
+    const {flag,data} =  response.data ;
 
-    let {list1,list2,id,...basicInfo} = data ;
-    let category4Data = {list1,list2,basicInfo,id} ;
+    const {list1,list2,id,...basicInfo} = data ;
+    const category4Data = {list1,list2,basicInfo,id} ;
     return {category4:category4Data,flag};
 }
 

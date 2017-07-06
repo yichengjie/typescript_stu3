@@ -1,8 +1,8 @@
 declare var module: any ;
-import Category4EditApp from './components/category4/Category4Edit' ;
 import {createAppNode,render} from './common' ;
+import Category4EditApp from './components/category4/Category4Edit' ;
 
-let appNode = createAppNode() ;
+const appNode = createAppNode() ;
 render(Category4EditApp,appNode) ;
 
 if (module.hot) {

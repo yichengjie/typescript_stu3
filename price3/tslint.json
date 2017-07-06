@@ -1,4 +1,5 @@
 {
+    "extends": ["tslint:latest"],
     "rules": {
         "align": [
             true,
@@ -8,8 +9,14 @@
         ],
         "ban": false,
         "class-name": true,
+        "comment-format": [
+            false
+        ],
         "curly": true,
         "eofline": false,
+        "import-sources-order":false,
+        "ordered-imports":false,
+        "member-access": false,
         "forin": true,
         "indent": [ true, "spaces" ],
         "interface-name": [true, "never-prefix"],
@@ -21,7 +28,8 @@
             "static-before-instance",
             "variables-before-functions"
         ],
-        //"no-any": true,
+        "object-literal-sort-keys": [false, "ignore-case"],
+        "no-any": false,
         "no-arg": true,
         "no-bitwise": true,
         "no-console": [
@@ -46,6 +54,11 @@
         "no-trailing-whitespace": false,
         "no-unused-expression": true,
         "no-use-before-declare": true,
+        "space-before-function-paren":false,
+        "only-arrow-functions": false,
+        "max-classes-per-file":false,
+        "prefer-object-spread": false,
+        "object-literal-key-quotes":false,
         "one-line": [
             true,
             "check-catch",
@@ -53,12 +66,14 @@
             "check-open-brace"
             //,"check-whitespace"
         ],
+        "prefer-const":false,
         "quotemark": [true, "single", "jsx-double"],
         "radix": true,
         "semicolon": [true, "always"],
         "switch-default": true,
         "trailing-comma": false,
         "triple-equals": [ true, "allow-null-check" ],
+        
         "typedef": [
             true,
             "parameter"
@@ -70,6 +85,12 @@
             "check-format",
             "allow-leading-underscore", 
             "allow-pascal-case"
+        ],
+         "whitespace": [
+            false
+        ],
+        "typedef-whitespace": [
+            false
         ]
     }
 }

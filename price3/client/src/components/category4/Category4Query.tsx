@@ -1,7 +1,7 @@
-import * as React from 'react' ;
 import {Button,Icon,notification} from 'antd';
-import FlightInfoContainer,{getFlightNoIconByValue} from './FlightInfoContainer' ;
 import {queryAllCategory4} from './api/CommonApi' ;
+import * as React from 'react' ;
+import FlightInfoContainer,{getFlightNoIconByValue} from './FlightInfoContainer' ;
 import {dealProjectUrl} from '../common' ;
 import {FlightInfoMap} from './other/common' ;
 import Siderbar from '../Siderbar' ;
@@ -11,8 +11,8 @@ interface Category4QueryState {
 }
 
 interface ListItemProps{
-    list1:Array<object> ;
-    list2:Array<object> ;
+    list1:object[] ;
+    list2:object[] ;
     basicInfo:object ;
 }
 
@@ -24,24 +24,24 @@ class Category4Query extends React.Component<any,Category4QueryState> {
         };
     }
     async componentDidMount(){
-        let {category4Data} = await queryAllCategory4();
+        const {category4Data} = await queryAllCategory4();
         this.setState({
             list:category4Data
         }) ;
     }
 
     renderList(){
-        let list = this.state.list ;
-        let keys = Object.keys(list) ;
-        let count = keys.length ;
+        const list = this.state.list ;
+        const keys = Object.keys(list) ;
+        const count = keys.length ;
         return keys.map((key:string,index:number) =>{
-            let item = list[key] ;
+            const item = list[key] ;
             return this.renderListItem(item,key,index,count) ;
         }) ;
     }
     handleDeleteItem = (id:string) => {
         //console.info(`删除的id 为 :${id}` ) ;
-        let list = {...this.state.list} ;
+        const list = {...this.state.list} ;
         delete list[id] ;
         this.setState({list}) ;
         notification.success({message:'删除成功!',description:'描述信息'}) ;
@@ -106,12 +106,12 @@ interface ListItemTitleProps {
     basicInfo: any;
     index:number ;
     count:number ;
-    onModify:Function ;
-    onDelete:Function ;
+    onModify:(id:string) => void ;
+    onDelete:(id:string) => void ;
 }
 
-function ListItemTitle (props:ListItemTitleProps){
-    let {id,basicInfo,index,count,onModify,onDelete} = props ;
+function ListItemTitle(props:ListItemTitleProps){
+    const {id,basicInfo,index,count,onModify,onDelete} = props ;
     return (
         <div className="category-flight-info-descr">
             <span className="mlr20">{(index + 1) + '/' + count}</span>

@@ -11,9 +11,9 @@ interface SiderbarProps{
 class Siderbar extends React.Component <SiderbarProps,any>{
   static defaultProps = {
      current:'',
-    //  openKeys:[],
+     openKeys:[],
   } ;
-  openKeys:Array<any> ;
+  openKeys:any[] ;
 
   constructor(props:SiderbarProps){
      super(props) ;

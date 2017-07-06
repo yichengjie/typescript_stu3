@@ -32,10 +32,10 @@ export function getFlightNoIconByValue(flightNoType:string){
 interface FlightInfoContainerProps{
     defaultShowOperBtn?:boolean;
     defaultShowAllRecord?:boolean;
-    flightList1?:Array<object> ;
-    flightList2?:Array<object> ;
-    onDelete?:Function ;
-    onModify?:Function ;
+    flightList1?:object[] ;
+    flightList2?:object[] ;
+    onDelete?:(name:string,index:number) => void ;
+    onModify?:(name:string,index:number) => void  ;
 }
 
 interface FlightInfoContainerStates{
@@ -47,8 +47,8 @@ class FlightInfoContainer extends React.PureComponent<FlightInfoContainerProps,F
     static defaultProps = {
         defaultShowOperBtn:false,
         defaultShowAllRecord:false,
-        onDelete:()=>{},
-        onModify:()=>{}
+        onDelete:(name:string,index:number)=>{},
+        onModify:(name:string,index:number)=>{}
     };
 
     static propTypes = {
@@ -119,7 +119,7 @@ class FlightInfoContainer extends React.PureComponent<FlightInfoContainerProps,F
 }
 
 
-function getTimeRangeListStr(timeRangeList:Array<any>){
+function getTimeRangeListStr(timeRangeList:any[]){
     if(isObjNull(timeRangeList) || timeRangeList.length === 0){
         return '' ;
     }
@@ -160,10 +160,10 @@ interface FlightInfoProps{
     label:string;
     name:string;
     showOperBtn?:boolean ;//显示操作列按钮
-    list?:Array<Object>;
+    list?:object[];
     splitLine?:boolean ; //显示分割线
-    onDelete?:Function;
-    onModify?:Function ;
+    onDelete?:(name:string,index:number) => void;
+    onModify?:(name:string,index:number) => void ;
 }
 
 
@@ -205,7 +205,7 @@ class FlightInfo extends React.PureComponent<FlightInfoProps,any>{
                     [fieldName]:toFlag,
                     [otherKey]:false
                 } ;
-            }.bind(this)) ;
+            }) ;
             //这里return true有什么用么？
             return true ;
         };
@@ -293,7 +293,7 @@ class FlightInfo extends React.PureComponent<FlightInfoProps,any>{
     }
 
     renderTbody(){
-        let arr:Array<any> = [] ;
+        let arr:any[] = [] ;
         let list = this.filterList() ;
         if(list !=null && list.length > 0){
             arr = list.map((item:any,index:number) => {
@@ -304,7 +304,7 @@ class FlightInfo extends React.PureComponent<FlightInfoProps,any>{
     }
 
 
-    renderShowHideBar(list:Array<Object>){
+    renderShowHideBar(list:object[]){
         if(list == null || list.length <= 3){
             return null ;
         }

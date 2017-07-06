@@ -14,11 +14,11 @@
         "removeComments": true,
         "suppressImplicitAnyIndexErrors":true,
         "forceConsistentCasingInFileNames": true,
-        //"strictNullChecks": true,
-        //"noImplicitAny": true,
-        //"noImplicitThis":true,
-        //"alwaysStrict":true,
-        "strict":true
+        "strictNullChecks": true,
+        "noImplicitAny": true,
+        "noImplicitThis":true,
+        "alwaysStrict":true
+        //"strict":true
     },
     "include": [
         "./client/src/**/*"

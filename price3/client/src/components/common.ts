@@ -1,13 +1,13 @@
 import * as _ from 'lodash' ;
 
 export function getQueryString(name:string):string { 
-    let searchStr = window.location.search ;
+    const searchStr = window.location.search ;
     return __getQueryStringBySearchStr(name,searchStr) ;
 }  
 //从给定的
 function __getQueryStringBySearchStr(name:string,searchStr:string):string { 
-    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i'); 
-    var r = searchStr.substr(1).match(reg); 
+    const reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i'); 
+    const r = searchStr.substr(1).match(reg); 
     if (r != null) {
         return _.unescape(r[2]); 
     }
@@ -15,15 +15,15 @@ function __getQueryStringBySearchStr(name:string,searchStr:string):string {
 }
 
 function getContextPath(){
-    var contextPathNode:any = document.getElementById('contextPath') ;
+    const contextPathNode:any = document.getElementById('contextPath') ;
     //console.info('contextPathNode : ' ,contextPathNode) ;
-    var contextPath =  (contextPathNode && contextPathNode.value) || '';
+    const contextPath =  (contextPathNode && contextPathNode.value) || '';
     //console.info('contextPath : ' ,contextPath) ;
     return contextPath ;
 }
 
 export function dealProjectUrl(url:string){
-    var contextPath = getContextPath() ;
+    const contextPath = getContextPath() ;
     if(url != null && !url.startsWith('/')){
         url = '/' + url ;
     }
@@ -34,7 +34,7 @@ export function dealProjectUrl(url:string){
     return contextPath + url ;
 }
 
-export function joinArr2Str(arr:Array<any>,splitStr?:string){
+export function joinArr2Str(arr:any[],splitStr?:string){
     if(isObjNull(arr) || arr.length === 0){
         return '' ;
     }

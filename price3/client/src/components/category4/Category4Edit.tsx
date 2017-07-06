@@ -48,8 +48,8 @@ interface Category4EditState{
     id?:string ; 
     basicInfo?:any ; 
     flightInfo?:any ;
-    flightList1?:Array<object> ;
-    flightList2?:Array<object> ;
+    flightList1?:object[] ;
+    flightList2?:object[];
 }
 
 
@@ -129,7 +129,7 @@ class Category4Edit extends React.Component <any,Category4EditState>{
     }
 
     //星期天需要从大到小进行排序
-    delFlightApplyWeek(fieldName:string,value:Array<number>){
+    delFlightApplyWeek(fieldName:string,value:number[]){
         if(fieldName === 'flightApplyWeek' && value && value.length > 1){
             value.sort(function(a:number,b:number){
                 return a - b ;
@@ -318,7 +318,7 @@ class Category4Edit extends React.Component <any,Category4EditState>{
 
 
 
-function getFormatDateStr(str:string) : moment.Moment | undefined{
+function getFormatDateStr(str:string ) : moment.Moment | undefined{
     if(str && str.length > 0 ){
         return moment(str, format) ;
     }
@@ -326,8 +326,8 @@ function getFormatDateStr(str:string) : moment.Moment | undefined{
 }
 
 interface ApplyTimeRangeListProps{
-    onChange:Function ;
-    value:Array<any> ;
+    onChange:(value:any[]) => void ;
+    value:any[] ;
     startFieldName?:string ;
     endFieldName?:string ;
 }
@@ -376,8 +376,8 @@ class ApplyTimeRangeList extends React.Component <ApplyTimeRangeListProps,any>{
 interface ApplyTimeRangeItemProps{
     startFieldName?:string;
     endFieldName?:string ;
-    onDelete?:Function;
-    onChange?:Function;
+    onDelete?:(index:number) => void;
+    onChange?:(newValue:object,index:number) => void;
     index:number ;
     value:any;
 }
@@ -388,7 +388,7 @@ class ApplyTimeRangeItem extends React.Component<ApplyTimeRangeItemProps,any>{
     static defaultProps = {
         startFieldName:'start',
         endFieldName:'end',
-        onDelete:()=>{}
+        onDelete:(index:number)=> {}
     } ;
     handleDelete = () => {
         let {index,onDelete} = this.props ;

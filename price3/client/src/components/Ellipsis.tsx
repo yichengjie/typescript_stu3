@@ -1,12 +1,13 @@
-import * as React from 'react' ;
 import {Tooltip} from 'antd'; 
+import * as React from 'react' ;
+
 interface EllipsisProps{
     width?:number ;
     children:string;
 }
 function Ellipsis (props:EllipsisProps){
-    let width = props.width || 150 ;
-    let style = {width:  width+'px'} ;
+    const width = props.width || 150 ;
+    const style = {width:  width+'px'} ;
     return(
         <Tooltip placement="topLeft" title={props.children}>
             <span className="ellipsis" style={style}>

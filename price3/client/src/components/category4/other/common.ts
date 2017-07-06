@@ -1,13 +1,13 @@
 export let FlightInfoMap:{[index:string]:any} = {
-   modelType:{
-     '':'不限',
-     '1':'适用',
-     '2':'不适用'
-   },
    codeShareFlightType:{
      '':'不限' ,
      '1':'仅适用' ,
      '2':'不适用' 
+   },
+   modelType:{
+     '':'不限',
+     '1':'适用',
+     '2':'不适用'
    },
    flightPlanApplyType:{
      '':'正班/加班',
@@ -39,11 +39,11 @@ export let FlightInfoMap:{[index:string]:any} = {
        if(item == null){
           return '' ;
        }
-       let realValue = item[name] ;
+       const realValue = item[name] ;
        if(realValue == null){
            return '' ;
        }
-       let showStr = FlightInfoMap[name][realValue] ;
+       const showStr = FlightInfoMap[name][realValue] ;
        return showStr ;
     }
 } ;
