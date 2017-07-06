@@ -49,7 +49,7 @@ interface Category4EditState{
     basicInfo?:any ; 
     flightInfo?:any ;
     flightList1?:Array<object> ;
-    flightList2?:Array<object>
+    flightList2?:Array<object> ;
 }
 
 
@@ -57,7 +57,7 @@ class Category4Edit extends React.Component <any,Category4EditState>{
     constructor(){
         super() ;
         let id = getQueryString('id') ;
-        console.info('id : ' , id) ;
+        //console.info('id : ' , id) ;
         this.state = {
             id,
             basicInfo:{
@@ -108,12 +108,12 @@ class Category4Edit extends React.Component <any,Category4EditState>{
     }
 
     handleBaseInfoChangeFactory(fieldName:string){
-        let formDataName = "basicInfo" ;
+        let formDataName = 'basicInfo' ;
         return this._handleFormDataChange(fieldName,formDataName) ;
     }
 
     handleFlightInfoChangeFactory(fieldName:string){
-        let formDataName = "flightInfo" ;
+        let formDataName = 'flightInfo' ;
         return this._handleFormDataChange(fieldName,formDataName) ;
     }
 
@@ -125,21 +125,21 @@ class Category4Edit extends React.Component <any,Category4EditState>{
             this.delFlightApplyWeek(fieldName,value) ;
             let newFormData = Object.assign({},formData,{[fieldName]:value}) ;
             this.setState({[formDataName]:newFormData}) ;
-        }
+        } ;
     }
 
     //星期天需要从大到小进行排序
     delFlightApplyWeek(fieldName:string,value:Array<number>){
         if(fieldName === 'flightApplyWeek' && value && value.length > 1){
-            value.sort(function(a,b){
-                return a - b
+            value.sort(function(a:number,b:number){
+                return a - b ;
             }) ;
         }
         return value ;
     }
     //基础表单信息
     getBaseInfoFieldProps = (fieldName:string) => {
-        let formDataName = "basicInfo" ;
+        let formDataName = 'basicInfo' ;
         let formData = this.state[formDataName] ;
         let value = formData[fieldName] ;
         let onChange = this.handleBaseInfoChangeFactory(fieldName) ;
@@ -147,7 +147,7 @@ class Category4Edit extends React.Component <any,Category4EditState>{
     }
     //航班号表单信息
     getFlightInfoFieldProps = (fieldName:string) => {
-        let formDataName = "flightInfo" ;
+        let formDataName = 'flightInfo' ;
         let formData = this.state[formDataName] ;
         let value = formData[fieldName] ;
         let onChange = this.handleFlightInfoChangeFactory(fieldName) ;
@@ -155,7 +155,7 @@ class Category4Edit extends React.Component <any,Category4EditState>{
     }
 
     handleAddTimeGroup = () =>{
-        let formDataName = "flightInfo" ;
+        let formDataName = 'flightInfo' ;
         let formData = this.state[formDataName] ;
         let timeRangeList = [...formData.timeRangeList] ;
         if(timeRangeList.length < 10){
@@ -213,24 +213,24 @@ class Category4Edit extends React.Component <any,Category4EditState>{
                 <CategorySection>基础信息</CategorySection>
                 <div className="category-section-row">
                     <label className="mr15">机型</label>
-                    <Select {...gbfp('modelType')} style={{ width: "100px" }} >
+                    <Select {...gbfp('modelType')} style={{ width: '100px' }} >
                         <Option value="">不限</Option>
                         <Option value="1">适用</Option>
                         <Option value="2">不适用</Option>
                     </Select>
                     <span className="mr10"></span>
-                    <Input style={{width:"150px"}}  {...gbfp('modelCode')} />
+                    <Input style={{width:'150px'}}  {...gbfp('modelCode')} />
 
                     <span className="mlr15"></span>
 
                     <label className="mlr15">代码共享航班</label>
-                    <Select style={{ width: "100px" }} {...gbfp('codeShareFlightType')}  >
+                    <Select style={{ width: '100px' }} {...gbfp('codeShareFlightType')}  >
                         <Option value="">可适用</Option>
                         <Option value="1">不适用</Option>
                         <Option value="2">仅适用</Option>
                     </Select>
                     <span className="mr15"></span>
-                    <Input style={{width:"150px"}}  {...gbfp('codeShareFlightCode')}
+                    <Input style={{width:'150px'}}  {...gbfp('codeShareFlightCode')}
                            placeholder="承运人"/>
                 </div>
 
@@ -256,7 +256,7 @@ class Category4Edit extends React.Component <any,Category4EditState>{
                     <span className="mlr10"></span>
                     <label className="mlr10">航班号</label>
                     <Select {...gffp('flightNoType')}
-                            style={{ width: "90px" }} >
+                            style={{ width: '90px' }} >
                         <Option value="">不限</Option>
                         <Option value="1">适用</Option>
                         <Option value="2">不适用</Option>
@@ -269,7 +269,7 @@ class Category4Edit extends React.Component <any,Category4EditState>{
                     <span className="mlr10"></span>
                     <label className="mlr10">适用航段</label>
                     <Select {...gffp('flightApplyRangeType')}
-                            style={{ width: "90px" }} >
+                            style={{ width: '90px' }} >
                         <Option value="">不限</Option>
                         <Option value="1">首段</Option>
                         <Option value="8">末段</Option>
@@ -312,7 +312,7 @@ class Category4Edit extends React.Component <any,Category4EditState>{
                 </div>
 
             </div>
-        )
+        ) ;
     }
 }
 
@@ -359,7 +359,7 @@ class ApplyTimeRangeList extends React.Component <ApplyTimeRangeListProps,any>{
                         value={item}
                         index={index}
                         key ={index}/>
-                )
+                ) ;
             }) ;
         }
         return retObj ;
@@ -392,13 +392,17 @@ class ApplyTimeRangeItem extends React.Component<ApplyTimeRangeItemProps,any>{
     } ;
     handleDelete = () => {
         let {index,onDelete} = this.props ;
-        onDelete && onDelete(index) ;
+        if(onDelete){
+            onDelete(index) ;
+        }
     }
     handleChangeFactory(fieldName:string){
         let {value,index,onChange} = this.props ;
         return (time:any,timeStr:string) => {
             let newValue = Object.assign({},value,{[fieldName]:timeStr}) ;
-            onChange && onChange(newValue,index) ;
+            if(onChange){
+                onChange(newValue,index) ;
+            } 
         } ;
     }
     render(){
@@ -426,7 +430,7 @@ class ApplyTimeRangeItem extends React.Component<ApplyTimeRangeItemProps,any>{
 
 function Category4EditApp(){
     return (
-        <Siderbar current='rule-category' openKeys ={['rule']}>
+        <Siderbar current="rule-category" openKeys ={['rule']}>
             <Category4Edit />
         </Siderbar>
     ) ;

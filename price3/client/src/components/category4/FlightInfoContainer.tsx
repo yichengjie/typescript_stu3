@@ -3,7 +3,7 @@ import {Icon} from 'antd' ;
 import * as classNames from 'classnames' ;
 import Ellipsis from '../Ellipsis' ;
 import PropTypes from 'prop-types' ;
-import {joinArr2Str} from '../common' ;
+import {joinArr2Str,isObjNull} from '../common' ;
 import {FlightInfoMap} from './other/common' ;
 
 let tdWidthArr = [70,120,170,80,100,200,60] ;
@@ -44,6 +44,17 @@ interface FlightInfoContainerStates{
 
 
 class FlightInfoContainer extends React.PureComponent<FlightInfoContainerProps,FlightInfoContainerStates>{
+    static defaultProps = {
+        defaultShowOperBtn:false,
+        defaultShowAllRecord:false,
+        onDelete:()=>{},
+        onModify:()=>{}
+    };
+
+    static propTypes = {
+        defaultShowOperBtn:PropTypes.bool,
+        defaultShowAllRecord:PropTypes.bool
+    } ; 
 
     constructor(props:FlightInfoContainerProps){
         super(props) ;
@@ -52,16 +63,7 @@ class FlightInfoContainer extends React.PureComponent<FlightInfoContainerProps,F
             showOperBtn:defaultShowOperBtn
         } ;
     }
-    static defaultProps = {
-        defaultShowOperBtn:false,
-        defaultShowAllRecord:false,
-        onDelete:()=>{},
-        onModify:()=>{}
-    };
-    static propTypes = {
-        defaultShowOperBtn:PropTypes.bool,
-        defaultShowAllRecord:PropTypes.bool
-    } ; 
+
     renderHeader(){
          let {showOperBtn} = this.state ;
          let headerClassName = classNames('header',{
@@ -94,7 +96,7 @@ class FlightInfoContainer extends React.PureComponent<FlightInfoContainerProps,F
                 <FlightInfo 
                     label="去程航班" 
                     splitLine = {true}
-                    name='flightList1'
+                    name="flightList1"
                     list = {flightList1}
                     onDelete={onDelete}
                     onModify={onModify}
@@ -103,7 +105,7 @@ class FlightInfoContainer extends React.PureComponent<FlightInfoContainerProps,F
                 />
                 <FlightInfo 
                     label="回程航班" 
-                    name='flightList2'
+                    name="flightList2"
                     list = {flightList2}
                     onDelete={onDelete}
                     onModify={onModify}
@@ -116,14 +118,15 @@ class FlightInfoContainer extends React.PureComponent<FlightInfoContainerProps,F
     
 }
 
+
 function getTimeRangeListStr(timeRangeList:Array<any>){
-    if(timeRangeList == null || timeRangeList.length == 0){
+    if(isObjNull(timeRangeList) || timeRangeList.length === 0){
         return '' ;
     }
-    let newArr = timeRangeList.map(function(item){
+    let newArr = timeRangeList.map(function(item:any){
         let {start,end} = item ;
         return start + '-' + end ;
-    }) 
+    }) ;
     return joinArr2Str(newArr) ;
 }
 
@@ -166,6 +169,11 @@ interface FlightInfoProps{
 
 
 class FlightInfo extends React.PureComponent<FlightInfoProps,any>{
+    
+    static defaultProps = {
+       list:[]  
+    };
+
     constructor(props:FlightInfoProps){
         super(props) ;//defaultShowOperBtn
         let {defaultShowAllRecord,defaultShowOperBtn} = this.props ;
@@ -176,14 +184,10 @@ class FlightInfo extends React.PureComponent<FlightInfoProps,any>{
         } ;
     }
 
-    static defaultProps = {
-       list:[] 
-    }
-
     handleChangeShowHideFactory(fieldName:string){
         let otherKeyMap:{[index:string]: string;} = {
-            "show5Record":"showAllRecord" ,
-            "showAllRecord":"show5Record"
+            show5Record:'showAllRecord' ,
+            showAllRecord:'show5Record'
         } ;
         
         return () => {
@@ -211,14 +215,18 @@ class FlightInfo extends React.PureComponent<FlightInfoProps,any>{
     handleDeleteOprFactory(index:number){
         let {name,onDelete} = this.props ;
         return function(){
-            onDelete && onDelete(name,index) ;
+            if(onDelete){
+                onDelete(name,index) ;
+            }
         } ;
     }
 
     handleModifyOperFactory(index:number){
         let {name,onModify} = this.props ;
         return function(){
-            onModify && onModify(name,index) ;
+            if(onModify){
+                onModify(name,index) ;
+            }
         } ;
     }
     //显示操作列的td
@@ -239,7 +247,7 @@ class FlightInfo extends React.PureComponent<FlightInfoProps,any>{
 
     renderApplyTimeList(timeRangeList:string){
         if(timeRangeList && timeRangeList.length > 23){
-            return <Ellipsis>{timeRangeList}</Ellipsis>
+            return <Ellipsis>{timeRangeList}</Ellipsis> ;
         }
         return timeRangeList ;
     }
@@ -328,7 +336,7 @@ class FlightInfo extends React.PureComponent<FlightInfoProps,any>{
     render(){
         let {splitLine,list=[],label} = this.props ;
         let splitLineClassName = classNames('content-split-line',{
-            'mt30':list.length == 0
+            'mt30':list.length === 0
         }) ;
         return (
             <div className="content">

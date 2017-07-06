@@ -13,7 +13,7 @@ interface Category4QueryState {
 interface ListItemProps{
     list1:Array<object> ;
     list2:Array<object> ;
-    basicInfo:object;
+    basicInfo:object ;
 }
 
 class Category4Query extends React.Component<any,Category4QueryState> {

@@ -22,7 +22,7 @@ class Siderbar extends React.Component <SiderbarProps,any>{
        openKeys:props.openKeys,
        collapsed: false,
        mode: 'inline',
-     }
+     } ;
   }
 
   handleMenuItemClick = (e:any) => {
@@ -38,7 +38,7 @@ class Siderbar extends React.Component <SiderbarProps,any>{
   }
 
   onCollapse = (collapsed:boolean) => {
-    console.log(`collapsed :${collapsed}`);
+    //console.log(`collapsed :${collapsed}`);
     let openKeys:any = [] ;
     if(collapsed){//如果是折叠
         this.openKeys = [...this.state.openKeys] ;

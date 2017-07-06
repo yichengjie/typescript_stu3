@@ -13,7 +13,7 @@ export async function queryAllCategory4(){
     data.forEach(function (item:any) {
         let {list1,list2,id,...basicInfo} = item ;
         let tmpObj = {[id]:{list1,list2,basicInfo}};
-        Object.assign(category4Data,tmpObj)
+        Object.assign(category4Data,tmpObj) ;
     }) ;
     return {flag,category4Data} ;
 }
