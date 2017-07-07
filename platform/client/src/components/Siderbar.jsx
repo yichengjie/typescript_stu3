@@ -10,6 +10,7 @@ import TimeStampConvertTool from './TimeStampConvertTool.jsx' ;
 import QRCodeSimple from './QRCodeSimple.jsx' ;
 import MyVCard from './MyVCard.jsx' ;
 import UUIDTool from './UUIDTool.jsx' ;
+import WordsCount from './WordsCount.jsx' ;
 
 import OnlineSwitchDev from './online-switch-dev.js' ;
 let {getContextPath} = OnlineSwitchDev ;
@@ -86,6 +87,12 @@ class Siderbar extends React.Component {
                             <Menu.Item key="sub1-timestampconvert">
                                 <Link to="/sub1-timestampconvert">TimeStamp</Link>
                             </Menu.Item>
+
+                            <Menu.Item key="sub1-wordscount">
+                                <Link to="/sub1-wordscount">字符串字节数</Link>
+                            </Menu.Item>
+
+                            
                         </SubMenu>
 
                         <SubMenu key="other" title={<span><Icon type="setting" /><span>其他</span></span>}>
@@ -108,6 +115,7 @@ class Siderbar extends React.Component {
                     <Route exact path="/sub1-timestampconvert" component={TimeStampConvertTool}/>
                     <Route exact path="/other-qrcodesimple" component={QRCodeSimple}/>
                     <Route exact path="/other-myvcard" component={MyVCard}/>
+                    <Route exact path="/sub1-wordscount" component={WordsCount}/>
                 </div>
             </div>
         );
