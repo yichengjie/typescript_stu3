@@ -14,6 +14,10 @@
   version "4.14.68"
   resolved "http://registry.npm.taobao.org/@types/lodash/download/@types/lodash-4.14.68.tgz#754fbab68bd2bbb69547dc8ce7574f7012eed7f6"
 
+"@types/node@^8.0.8":
+  version "8.0.8"
+  resolved "http://registry.npm.taobao.org/@types/node/download/@types/node-8.0.8.tgz#0dc4ca2c6f6fc69baee16c5e928c4a627f517ada"
+
 "@types/prop-types@^15.5.1":
   version "15.5.1"
   resolved "http://registry.npm.taobao.org/@types/prop-types/download/@types/prop-types-15.5.1.tgz#1ecf52621299e65b855374337fb11fd2d1066fc1"
