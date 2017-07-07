@@ -11,7 +11,7 @@ module.exports = {
             'react-hot-loader/patch',
             './index.jsx'
         ] ,
-        vendor: ['react','react-dom','moment','lodash'], 
+        vendor: ['react','react-dom'], 
     },
     resolve: {
         extensions: [".jsx", ".js", ".json",".less"]
