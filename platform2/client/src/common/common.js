@@ -33,10 +33,13 @@ export function validateJSONStr(jsonStr){
     }
 }
 
-
 export function getContextPath() {
-    let $contextPath = $("#contextPath") ;
-    return $contextPath.val() ;
+    let value = '' ;
+    let contextPathNode = document.getElementById('contextPath') ;
+    if(contextPathNode != null){
+        value = contextPathNode.value ;
+    }
+    return value ;
 }
 
 export default {

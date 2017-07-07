@@ -15,6 +15,7 @@ module.exports = webpackMerge(commonConfig, {
     output: {
         path: distPath,
         filename: '[name].[chunkhash].js',
+        publicPath:'/dist'
     },
     plugins: [
         new webpack.LoaderOptionsPlugin({

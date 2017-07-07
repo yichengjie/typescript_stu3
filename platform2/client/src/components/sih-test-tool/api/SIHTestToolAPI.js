@@ -4,7 +4,7 @@ import {getContextPath} from '../../../common/common.js' ;
 
 function querySIHData(jsData){
     let contextPath = getContextPath() ;
-    let url = contextPath +'/jcf/sih.action' ;
+    let url = contextPath +'/api/jcf/sih.action' ;
     return HttpClientUtil.dealAjaxRequest4JSObj(url,jsData) ;
 }
 

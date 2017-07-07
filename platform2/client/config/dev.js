@@ -27,7 +27,7 @@ module.exports = webpackMerge(commonConfig, {
         //其实很简单的，只要配置这个参数就可以了  
         hot:true,
         proxy: {  
-            '/api/*': {  
+            '/api/*/**': {  
                 target: 'http://'+serverIPAddress+':'+serverPort+'/',  
                 secure: false  
             }  

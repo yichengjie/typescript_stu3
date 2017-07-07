@@ -10,6 +10,7 @@ import TimeStampConvertTool from './TimeStampConvertTool.jsx' ;
 import QRCodeSimple from './QRCodeSimple.jsx' ;
 import MyVCard from './MyVCard.jsx' ;
 import UUIDTool from './UUIDTool.jsx' ;
+let logo = require('../../assets/images/logo.png') ;
 
 import OnlineSwitchDev from './online-switch-dev.js' ;
 let {getContextPath} = OnlineSwitchDev ;
@@ -56,7 +57,7 @@ class Siderbar extends React.Component {
         return (
             <div>
                 <div id="leftMenu">
-                    <img src={`${contextPath}/static/images/logo.png`} width="50" id="logo"/>
+                    <img src={logo} width="50" id="logo"/>
                     <Menu
                         theme="dark"
                         onClick={this.handleClick}

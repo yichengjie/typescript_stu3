@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 var path = require('path') ;
+let sihService = require('./sih/sihService.js') ;
+
 var port = 9090 ;
 
 let publicPath = path.resolve(__dirname,'../public') ;
@@ -11,14 +13,12 @@ app.use('/public',express.static(publicPath));
 app.use(express.static(jspPath));
 app.use('/dist',express.static(distPath));
 
+// app.get('/hello',function(req, res){
+//    res.send('hello world');
+// }) ;
 
-//getAllCategoryStaticData 
-app.get('/api/jcf',function(req, res){
-  let category4List = CategoryService.queryAllCategory4() ;
-  let retData = {
-      flag:true,
-      data:category4List
-  } ;
+app.post('/api/jcf/sih.action',async function(req, res){
+  let retData =  await sihService.querySIHData() ;
   res.json(retData);
 }) ;
 
