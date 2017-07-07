@@ -27,6 +27,13 @@ class WordsCount extends PureComponent{
         }) ;
     }
 
+    handleClearOper = () =>{
+        this.setState({
+            inputValue:'',
+            outputValue:''
+        }) ;
+    }
+
     render(){
         return (
             <div>
