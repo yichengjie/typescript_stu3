@@ -1,0 +1,1 @@
+在price2的基础上引入了ts-loader到webpack的配置中
