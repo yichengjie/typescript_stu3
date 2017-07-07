@@ -1,0 +1,32 @@
+@import "./mixin.scss" ;
+$sidebarWidth : 185px;
+/* 左侧导航固定宽度 */
+#leftMenu {   
+  position: absolute;
+  width: $sidebarWidth;
+  top: 0 ;
+  left: 0 ;
+  bottom: 0 ; 
+  background-color: #333;
+  border-right: 1px solid #e9e9e9; 
+}
+/* logo样式 */
+#logo {
+  display: block ;
+  margin:  20px auto ;
+  @include transition(all 1s) ;
+  &:hover{
+     @include transform(rotate(360deg))
+  }
+}
+/* 右侧宽度自适应 */
+#rightWrap {
+    @include box-sizing(border-box) ;
+    position: absolute ;
+    padding: 20px 20px 0 20px;
+    top: 0 ;
+    left: $sidebarWidth; 
+    right: 0 ;
+    bottom: 0 ;
+    overflow-y: auto;
+}

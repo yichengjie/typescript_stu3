@@ -1,0 +1,18 @@
+@import "./sidebar.scss" ;
+@import "./base64tool.scss" ;
+@import "./sihTestTool.scss" ;
+@import "./jsonTool.scss" ; 
+@import "./vcard.scss" ;
+
+.btn-block{
+    display: block ;
+    width: 100% ;
+    margin: 10px 0; 
+}
+
+.timestamp-container{
+    width: 600px;
+    height: 100%;
+    margin: 50px auto;
+    
+}

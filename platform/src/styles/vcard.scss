@@ -1,0 +1,18 @@
+@import "./mixin.scss" ;
+
+.vcard-tool-container{
+    display: block ;
+    width: 100% ;
+    height: 100% ;
+    @include box-sizing(border-box) ;
+}
+.vcard-tool-box{
+    display: inline-block ;
+    @include box-sizing(border-box) ;
+    width: 49% ;
+    height: 100%; 
+    overflow: auto ;
+}
+.vcard-tool-output{
+    border: 1px solid rgb(217, 217, 217) ;
+}
