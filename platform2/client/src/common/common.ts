@@ -1,4 +1,4 @@
-export function jsonSyntaxHighlight(json) {
+export function jsonSyntaxHighlight(json:object|string) {
     if (typeof json != 'string') {
         json = JSON.stringify(json, undefined, 2);
     }
@@ -20,11 +20,11 @@ export function jsonSyntaxHighlight(json) {
     });
 }
 
-export function simpleFormat2JsonStr(jsObj){
+export function simpleFormat2JsonStr(jsObj:object){
     return JSON.stringify(jsObj,null,4) ;
 }
 
-export function validateJSONStr(jsonStr){
+export function validateJSONStr(jsonStr:string){
     try {
         JSON.parse(jsonStr) ; 
         return true ; 
@@ -35,21 +35,20 @@ export function validateJSONStr(jsonStr){
 
 export function getContextPath() {
     let value = '' ;
-    let contextPathNode = document.getElementById('contextPath') ;
+    let contextPathNode:any = document.getElementById('contextPath') ;
     if(contextPathNode != null){
         value = contextPathNode.value ;
     }
     return value ;
 }
 
-export function getByteLen(val) {
+export function getByteLen(val:string) {
     var len = 0;
     for (var i = 0; i < val.length; i++) {
         var a = val.charAt(i);
         if (a.match(/[^\x00-\xff]/ig) != null) {
             len += 2;
-        }
-        else {
+        }else {
             len += 1;
         }
     }

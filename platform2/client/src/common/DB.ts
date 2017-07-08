@@ -1,4 +1,5 @@
-function getDBJSONData(dbKey){
+declare let Cookie :any ;
+function getDBJSONData(dbKey:string){
     return function (){
         var storage = window.localStorage;  
         var dataStr = storage? storage.getItem(dbKey): Cookie.read(dbKey);
@@ -9,8 +10,8 @@ function getDBJSONData(dbKey){
     }
 }
 
-function saveDBJSONData(dbKey){
-    return function (jsObj){
+function saveDBJSONData(dbKey:string){
+    return function (jsObj:object){
         var storage = window.localStorage;  
         let dataStr = JSON.stringify(jsObj) ;
         if(storage != null){

@@ -5,3 +5,4 @@ dist/
 .vscode
 es/
 es6/
+ts-build/
