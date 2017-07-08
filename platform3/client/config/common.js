@@ -5,7 +5,7 @@ var stat = fs.stat ;
 let contextPath = path.resolve(__dirname, '../../') ;
 let distPath = contextPath+"/dist" ;
 let publicPath = contextPath + '/public' ;
-let srcPath = contextPath + '/client/src' ;
+let srcPath = contextPath + '/client/ts-build' ;
 let assetsPath = contextPath + '/client/assets';
 
 //前端的根目录
