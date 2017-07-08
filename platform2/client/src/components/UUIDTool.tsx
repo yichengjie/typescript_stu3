@@ -1,5 +1,6 @@
 import  * as React from 'react' ;
 import { Input,Button ,Radio} from 'antd';
+const {TextArea} = Input ;
 import * as _ from 'lodash';
 const RadioGroup = Radio.Group ;
 // Generate a v1 UUID (time-based)
@@ -53,7 +54,7 @@ class UUIDTool extends React.Component<any,UUIDToolStates>{
         return (
             <div>
                 <h5>uuid结果</h5>
-                <Input type="textarea" data-rows={5} 
+                <TextArea type="textarea" rows={5} 
                     value={this.state.outputValue} 
                     readOnly={true}/> 
                 <br/>

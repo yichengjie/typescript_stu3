@@ -1,6 +1,7 @@
 import * as React from 'react' ;
 import { Input,Button,Radio } from 'antd';
 const RadioGroup = Radio.Group ;
+const {TextArea} = Input ;
 var md5 = require('md5');
 
 interface MD5ToolStates{
@@ -45,11 +46,11 @@ class MD5Tool extends React.Component<any,MD5ToolStates>{
         return (
            <div>
                 <h5>请输入原文</h5>
-                <Input type="textarea" data-rows={10} 
+                <TextArea type="textarea" rows={10} 
                     value={this.state.inputValue} 
                     onChange={this.handleInputChangeFactory('inputValue')}/>
                 <h5>结果</h5>
-                <Input type="textarea" data-rows={3} 
+                <TextArea type="textarea" rows={3} 
                     value={this.state.outputValue} 
                     readOnly={true}/>
                 <br/>

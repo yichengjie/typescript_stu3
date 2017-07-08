@@ -1,6 +1,7 @@
 import * as React from 'react' ;
 import {getByteLen} from '../common/common' ;
 import { Input,Button } from 'antd';
+const {TextArea} = Input ;
 
 interface WordsCountStates{
     inputValue:string ;
@@ -43,11 +44,11 @@ class WordsCount extends React.PureComponent<any,WordsCountStates>{
         return (
             <div>
                 <h5>请输入原文</h5>
-                <Input type="textarea" data-rows={10} 
+                <TextArea type="textarea" rows={10} 
                     value={this.state.inputValue} 
                     onChange={this.handleInputChangeFactory('inputValue')}/>
                 <h5>结果</h5>
-                <Input type="textarea" data-rows={3} 
+                <TextArea type="textarea" rows={3} 
                     value={this.state.outputValue} 
                     readOnly/>
                 <br/>

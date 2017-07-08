@@ -1,5 +1,6 @@
 import  * as React from 'react' ;
 import { Input,Button } from 'antd';
+const { TextArea } = Input;
 var Base64 = require('js-base64').Base64;
 
 interface Base64ToolStates{
@@ -36,7 +37,7 @@ class Base64Tool extends React.Component<any,Base64ToolStates> {
         return (
             <div>
                 <h5>请输入原文</h5>
-                <Input type="textarea" data-rows={23} 
+                <TextArea type="textarea" rows={23} 
                     value={this.state.inputValue} 
                     onChange={this.handleInputChange}/>
                 <div className="oper-btn-container">

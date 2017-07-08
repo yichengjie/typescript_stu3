@@ -1,6 +1,7 @@
 import * as React from 'react' ;
 import * as ReactDOM from 'react-dom';
 import { Input,Button,notification } from 'antd';
+const {TextArea} = Input ;
 let QRCode = require('qrcode') ;
 
 interface QRCodeSimpleStates{
@@ -48,7 +49,7 @@ class QRCodeSimple extends React.Component<any,QRCodeSimpleStates>{
         return (
             <div>
                  <h5>请输入原文</h5>
-                <Input type="textarea" data-rows={10} 
+                <TextArea type="textarea" rows={10} 
                     value={this.state.inputValue} 
                     onChange={this.handleInputChange}/>
                 <br/>

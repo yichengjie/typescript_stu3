@@ -1,6 +1,7 @@
 import * as React from 'react' ;
 import {jsonSyntaxHighlight,validateJSONStr} from '../common/common' ;
 import { Input,Button,notification } from 'antd';
+const {TextArea} = Input ;
 
 interface JSONToolStates{
     inputValue:string ;
@@ -62,7 +63,7 @@ class JSONTool extends React.Component<any,JSONToolStates>{
         return (
             <div className="json-tool-container">
                 <div className="json-tool-box">
-                     <Input type="textarea" 
+                     <TextArea type="textarea" 
                         style={{height:"100%"}}
                         placeholder="请输入JSON" 
                         value = {this.state.inputValue}

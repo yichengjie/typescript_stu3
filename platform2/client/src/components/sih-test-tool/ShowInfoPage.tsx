@@ -1,5 +1,6 @@
 import React,{Component} from 'react' ;
 import { Input,Button ,notification} from 'antd';
+let {TextArea} = Input ;
 import ProgressBar from '../ProgressBar' ;
 import OnlineSwitchDev from '../online-switch-dev' ;
 let SIHAPI = OnlineSwitchDev.SIHAPI ;
@@ -90,18 +91,18 @@ class ShowInfoPage extends Component <any,ShowInfoPageState>{
     render(){
         return (
             <div className="sih-test-tool-showInfoPage">
-                <Input type="textarea"  data-rows={20} 
+                <TextArea type="textarea"  rows={20} 
                     className="sih-test-tool-textarea"
                     placeholder="请输入SIH请求JSON" 
                     value = {this.state.inputValue}
                     onChange={this.handleChangeInputValue}/>
                 <div className="sih-test-tool-split"></div>
-                <Input type="textarea"  data-rows={20} className="sih-test-tool-textarea" 
+                <TextArea type="textarea"  rows={20} className="sih-test-tool-textarea" 
                     readOnly placeholder="SIH处理返回结果" value={
                        this.getJSONStrByJSObj(this.state.outputObj)
                     }/>
                 {this.renderQueryBtnOrProgress()}
-                <Input  type="textarea"  data-rows={4}  readOnly
+                <TextArea  type="textarea"  rows={4}  readOnly
                      value={this.state.reqHeaderValue} placeholder="MQ请求头信息"/>
             </div>
         ) ;
