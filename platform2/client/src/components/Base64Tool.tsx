@@ -1,29 +1,34 @@
-import  React,{Component} from 'react' ;
+import  * as React from 'react' ;
 import { Input,Button } from 'antd';
 var Base64 = require('js-base64').Base64;
-class Base64Tool extends Component {
-    constructor(props){
+
+interface Base64ToolStates{
+    inputValue:string ;
+}
+
+class Base64Tool extends React.Component<any,Base64ToolStates> {
+    constructor(props:any){
         super(props) ;
         this.state = {
             inputValue:''
         }   
     }
-    handleInputChange = (e) => {
+    handleInputChange = (e:any) => {
         let value = e.target.value ;
         this.setState({inputValue:value}) ;
     }
 
-    handleEncodeOper = (e) => {
+    handleEncodeOper = (e:any) => {
         let encodeStr = Base64.encode(this.state.inputValue);
         this.setState({inputValue:encodeStr}) ;
     }
 
-    handleDecodeOper = (e) => {
+    handleDecodeOper = (e:any) => {
         let decodeStr = Base64.decode(this.state.inputValue);
         this.setState({inputValue:decodeStr}) ;
     }
 
-    handleClearOper = (e) => {
+    handleClearOper = (e:any) => {
         this.setState({inputValue:''}) ;
     }
     
@@ -31,7 +36,7 @@ class Base64Tool extends Component {
         return (
             <div>
                 <h5>请输入原文</h5>
-                <Input type="textarea" rows={23} 
+                <Input type="textarea" data-rows={23} 
                     value={this.state.inputValue} 
                     onChange={this.handleInputChange}/>
                 <div className="oper-btn-container">

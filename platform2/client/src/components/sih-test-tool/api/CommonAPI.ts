@@ -1,5 +1,5 @@
-import sihInputData from '../data/sih-input.json' ;
-import sihFormData from '../data/sih-formdata.json' ;
+import sihInputData from '../data/sih-input' ;
+import sihFormData from '../data/sih-formdata' ;
 import SIHTestToolDao from './SIHTestToolDao.js' ;
 
 function getSIHInputDataTemplate(){
@@ -44,7 +44,7 @@ function getSIHFormData(){
     return formData ;
 }
 
-function saveSIHInputDataTemplate(inputDataStr){
+function saveSIHInputDataTemplate(inputDataStr:string){
     let jsonObj = JSON.parse(inputDataStr) ;
     SIHTestToolDao.saveMsgPageInputDataTemplate(jsonObj) ;
 }
@@ -54,7 +54,7 @@ function resetSIHInputDataTemplate(){
     return JSON.stringify(sihInputData,null,2)  ;
 }
 
-function saveFormData2DB(formData){
+function saveFormData2DB(formData:object){
     SIHTestToolDao.saveConfigPageFormData(formData) ;
 }
 

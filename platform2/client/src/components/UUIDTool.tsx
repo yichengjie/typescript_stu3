@@ -1,15 +1,20 @@
-import  React,{Component} from 'react' ;
+import  * as React from 'react' ;
 import { Input,Button ,Radio} from 'antd';
+import * as _ from 'lodash';
 const RadioGroup = Radio.Group ;
 // Generate a v1 UUID (time-based)
 const uuidV1 = require('uuid/v1');
 // Generate a v4 UUID (random)
 const uuidV4 = require('uuid/v4');
 
+interface UUIDToolStates{
+    outputValue:string ;
+    type:number ;
+}
 
-class UUIDTool extends Component{
+class UUIDTool extends React.Component<any,UUIDToolStates>{
 
-    constructor(props){
+    constructor(props:any){
         super(props) ;
         this.state = {
             outputValue:'',
@@ -17,7 +22,7 @@ class UUIDTool extends Component{
         } ;
     }
 
-    handleTypeChange = (e) => {
+    handleTypeChange = (e:any) => {
         let value = e.target.value ;
         this.setState({type:value}) ;
     }
@@ -33,7 +38,7 @@ class UUIDTool extends Component{
         return uuid4Str ;
     }
 
-    handleCreateUUID = (e) => {
+    handleCreateUUID = (e:any) => {
         let type = this.state.type ;
         let uuidStr = null ;
         if(type === 1){
@@ -48,9 +53,9 @@ class UUIDTool extends Component{
         return (
             <div>
                 <h5>uuid结果</h5>
-                <Input type="textarea" rows={5} 
+                <Input type="textarea" data-rows={5} 
                     value={this.state.outputValue} 
-                    readOnly="readOnly"/> 
+                    readOnly={true}/> 
                 <br/>
                 <br/>
                 <RadioGroup onChange={this.handleTypeChange} 
@@ -62,7 +67,7 @@ class UUIDTool extends Component{
                     <Button type="primary" className="oper-item" 
                      onClick ={this.handleCreateUUID}>确定</Button>
                 </div>  
-                <Authority auth="1-1-1" allAuth="1-1-2">
+                <Authority auth="1-1-1" allAuthList={['1-1-1']}>
                     <h4>你有权限看见这个</h4>
                 </Authority>
             </div>
@@ -70,19 +75,25 @@ class UUIDTool extends Component{
     }
 }
 
+interface AuthorityProps{
+    auth:string ;
+    allAuthList:string[] ;
+    children?:any ;
+}
 
-class Authority extends Component{
+class Authority extends React.Component<AuthorityProps,any>{
     checkAuth(){
         let auth = this.props.auth ;
-        let allAuth = this.props.allAuth ;
-        if(allAuth === auth){
+        let allAuthList = this.props.allAuthList ;
+        if(_.includes(allAuthList,auth)){
             return true ;
         }
         return false ;
     }
     render(){
-        if(this.checkAuth()){
-            return this.props.children
+        let children = this.props.children ;
+        if(children && this.checkAuth()){
+            return children;
         }
         return null ;
     }

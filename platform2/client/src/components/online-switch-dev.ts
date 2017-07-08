@@ -1,5 +1,5 @@
-import {getContextPath} from '../common/common.js' ;
-import SIHAPI from './sih-test-tool/api/SIHTestToolAPI.js' ;
+import {getContextPath} from '../common/common' ;
+import SIHAPI from './sih-test-tool/api/SIHTestToolAPI' ;
 export default {
    getContextPath,
    SIHAPI

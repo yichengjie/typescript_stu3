@@ -1,13 +1,14 @@
 import  React,{Component} from 'react' ;
 import { Tabs, Icon } from 'antd';
-import ShowInfoPage from './ShowInfoPage.jsx' ;
-import MQParamCfgPage from './MQParamCfgPage.jsx' ;
-import OnlineSwitchDev from '../online-switch-dev.js' ;
+import ShowInfoPage from './ShowInfoPage' ;
+import MQParamCfgPage from './MQParamCfgPage' ;
+import OnlineSwitchDev from '../online-switch-dev' ;
 let SIHAPI = OnlineSwitchDev.SIHAPI ;
-
 const TabPane = Tabs.TabPane;
-class SIHTestTool extends Component {
-    constructor(props){
+
+
+class SIHTestTool extends Component<any,any> {
+    constructor(props:any){
         super(props) ;
         this.state = {
            formData:{},
@@ -21,7 +22,7 @@ class SIHTestTool extends Component {
         this.setState({formData:sihFormData}) ;
     }
 
-    handleModifyFormData(newFormData){
+    handleModifyFormData(newFormData:any){
         this.setState({formData:{...newFormData}}) ;
         //将数据保存到localStorage中
         SIHAPI.saveFormData2DB(newFormData) ;
@@ -34,8 +35,8 @@ class SIHTestTool extends Component {
                     <ShowInfoPage formData ={this.state.formData} />
                 </TabPane>
                 <TabPane tab={<span><Icon type="setting" />MQ参数配置</span>} key="2">
-                    <MQParamCfgPage formData = {this.state.formData}
-                      handleModifyFormData = {this.handleModifyFormData} />
+                    <MQParamCfgPage data-formData = {this.state.formData}
+                      data-handleModifyFormData = {this.handleModifyFormData} />
                 </TabPane>
             </Tabs>
         );

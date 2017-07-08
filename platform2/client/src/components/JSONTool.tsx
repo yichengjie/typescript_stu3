@@ -1,9 +1,15 @@
-import React,{Component} from 'react' ;
-import {jsonSyntaxHighlight,validateJSONStr} from '../common/common.js' ;
+import * as React from 'react' ;
+import {jsonSyntaxHighlight,validateJSONStr} from '../common/common' ;
 import { Input,Button,notification } from 'antd';
-class JSONTool extends Component{
 
-    constructor(props){
+interface JSONToolStates{
+    inputValue:string ;
+    outputValue:string ;
+}
+
+class JSONTool extends React.Component<any,JSONToolStates>{
+
+    constructor(props:any){
         super(props) ;
         this.state = {
             inputValue:'',
@@ -11,7 +17,7 @@ class JSONTool extends Component{
         } ;
     }
 
-    handleInputChange = (e)=>{
+    handleInputChange = (e:any)=>{
         let value = e.target.value ;
         this.setState({inputValue:value}) ;
     }
@@ -24,22 +30,22 @@ class JSONTool extends Component{
         let jsonStr = this.state.inputValue ;
         if(jsonStr == null || jsonStr.trim() == ''){
             this.setState({outputValue:''}) ;
-            return '' ;
+            return true ;
         }
         let flag = validateJSONStr(jsonStr) ;
         if(flag){
-            notification.success({message:'合法的JSON字符串!'}) ;
+            notification.success({message:'合法的JSON字符串!',description:''}) ;
         }else{
-            notification.error({message:'不是合法JSON字符串!'}) ;
+            notification.error({message:'不是合法JSON字符串!',description:''}) ;
         }
-
+        return true ;
     }
 
     handleFormatOper = () => {
         let jsonStr = this.state.inputValue ;
         if(jsonStr == null || jsonStr.trim() == ''){
             this.setState({outputValue:''}) ;
-            return '' ;
+            return true ;
         }
         let flag = validateJSONStr(jsonStr) ;
         if(flag){
@@ -47,8 +53,9 @@ class JSONTool extends Component{
             console.info(showStr) ;
             this.setState({outputValue:showStr}) ;
         }else{
-             notification.error({message:'不是合法JSON字符串!'}) ;
+             notification.error({message:'不是合法JSON字符串!',description:''}) ;
         }
+        return true ;
     }
 
     render(){

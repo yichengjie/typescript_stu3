@@ -1,8 +1,13 @@
-import React,{Component} from 'react' ;
+import * as React from 'react' ;
 import { Progress} from 'antd';
 
-class ProgressBar extends Component{
-    constructor(props){
+interface ProgressBarStates{
+    percent:number ;
+}
+
+class ProgressBar extends React.Component<any,ProgressBarStates>{
+    timer : any ;
+    constructor(props:any){
         super(props) ;
         this.state = {
             percent:1
@@ -10,7 +15,7 @@ class ProgressBar extends Component{
     }
 
     componentDidMount(){
-        this.timer = window.setInterval(function(){
+        this.timer = window.setInterval(() =>{
           if(this.state.percent === 99){
             window.clearInterval(this.timer) ;
           }else{
@@ -19,10 +24,10 @@ class ProgressBar extends Component{
                 return Object.assign({},prevState,{percent}) ;
             }) ; 
           }
-       }.bind(this),50) ; 
+       },50) ; 
     }
 
-    componentWillReceiveProps(newProp){
+    componentWillReceiveProps(newProp:any){
         let {isQuerying} = newProp ;
         if(isQuerying === false){
             this.setState({percent:1}) ;

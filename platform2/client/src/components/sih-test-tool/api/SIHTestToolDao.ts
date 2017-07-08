@@ -1,6 +1,6 @@
 let dbConfigKey = "SIHTestToolConfigFormData" ;
 let dbMsgKey = "SIHTestToolMsgInputData" ;
-import Dao from '../../../common/DB.js' ;
+import Dao from '../../../common/DB' ;
 
 export default {
    getConfigPageFormData:Dao.getDBJSONData(dbConfigKey),

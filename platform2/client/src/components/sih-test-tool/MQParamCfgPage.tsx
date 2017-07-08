@@ -1,13 +1,18 @@
 import React,{Component} from 'react' ;
-import { Form, Row, Col, Input, Button, Icon,notification } from 'antd';
+import { Form, Row, Col, Input, Button,notification } from 'antd';
 const FormItem = Form.Item;
-
-import OnlineSwitchDev from '../online-switch-dev.js' ;
-
-
+import OnlineSwitchDev from '../online-switch-dev' ;
 let SIHAPI = OnlineSwitchDev.SIHAPI ;
-class MQParamCfgPage extends Component {
-    constructor(props){
+
+interface MQParamCfgPageProps{
+    formData:any ;
+    form:any ;
+    handleModifyFormData:(data:any)=> void;
+}
+
+class MQParamCfgPage extends Component<MQParamCfgPageProps,any> {
+    formItemLayout:any ;
+    constructor(props:any){
         super(props) ;
         this.formItemLayout = {
           labelCol: { span: 10 },
@@ -22,25 +27,25 @@ class MQParamCfgPage extends Component {
     }
 
     //配置页面点击重制的处理函数
-    handleResetConfigInfo = (e) => {
+    handleResetConfigInfo = (e:any) => {
        let formDataOrigin = SIHAPI.getSIHFormDataOrigin() ;
        let form = this.props.form ;
        form.setFieldsValue(formDataOrigin) ;
        //数据同步到localStorage
        this.props.handleModifyFormData(formDataOrigin) ;
-       notification.success({message:"重置成功!"}) ;
+       notification.success({message:"重置成功!",description:''}) ;
     }
 
    //配置页面点击修改按钮的处理函数
-    handleSaveConfigInfo = (e) => {
+    handleSaveConfigInfo = (e:any) => {
         let form = this.props.form ;
         let formData = form.getFieldsValue() ;
         //数据同步到localStorage
         this.props.handleModifyFormData(formData) ;
-        notification.success({message:"保存成功!"}) ;
+        notification.success({message:"保存成功!",description:''}) ;
     }
 
-    getConfigInput(label,propName){
+    getConfigInput(label:string,propName:string){
         let formItemLayout = this.formItemLayout ;
         const { getFieldDecorator } = this.props.form;
         return (

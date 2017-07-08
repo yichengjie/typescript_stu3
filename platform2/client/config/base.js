@@ -8,19 +8,22 @@ module.exports = {
     context: srcPath,
     entry:{
         index:[
-            'react-hot-loader/patch',
-            './index.ts'
+            './index.jsx'
         ] ,
         vendor: ['react','react-dom'], 
     },
     resolve: {
-        extensions: [".tsx", ".ts", ".json",".less"]
+        extensions: [".jsx", ".js", ".json",".less"]
     },
     module: {
       rules: [
+        // {
+        //   test: /\.tsx?$/,exclude: [/node_modules/],
+        //   loader: "babel-loader!ts-loader"
+        // },
         {
-          test: /\.tsx?$/,exclude: [/node_modules/],
-          loader: "babel-loader!ts-loader"
+          test: /\.jsx?$/,exclude: [/node_modules/],
+          loader: "babel-loader"
         },
         {test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'},
         {

@@ -1,22 +1,28 @@
-import  React,{Component} from 'react' ;
-import { Menu, Icon, Switch } from 'antd';
+import  * as React from 'react' ;
+import { Menu, Icon } from 'antd';
 const SubMenu = Menu.SubMenu;
 import { Route, Link} from 'react-router-dom' ;
-import SIHTestTool from './sih-test-tool/index.jsx' ;
-import Base64Tool from './Base64Tool.jsx' ;
-import JSONTool from './JSONTool.jsx' ;
-import MD5Tools from './MD5Tools.jsx' ;
-import TimeStampConvertTool from './TimeStampConvertTool.jsx' ;
-import QRCodeSimple from './QRCodeSimple.jsx' ;
-import MyVCard from './MyVCard.jsx' ;
-import UUIDTool from './UUIDTool.jsx' ;
-import WordsCount from './WordsCount.jsx' ;
+import SIHTestTool from './sih-test-tool/index' ;
+import Base64Tool from './Base64Tool' ;
+import JSONTool from './JSONTool' ;
+import MD5Tools from './MD5Tools' ;
+import TimeStampConvertTool from './TimeStampConvertTool' ;
+import QRCodeSimple from './QRCodeSimple' ;
+import MyVCard from './MyVCard' ;
+import UUIDTool from './UUIDTool' ;
+import WordsCount from './WordsCount' ;
 
-import OnlineSwitchDev from './online-switch-dev.js' ;
+import OnlineSwitchDev from './online-switch-dev' ;
 let {getContextPath} = OnlineSwitchDev ;
 
-class Siderbar extends React.Component {
-    constructor(props){
+interface SiderbarStates{
+    current:string ;
+    username:string ;
+    currentOpenKey:string ;
+}
+
+class Siderbar extends React.Component <any,SiderbarStates>{
+    constructor(props:any){
         super(props) ;
         let {location} = props ;
         let pathname = location.pathname ;
@@ -31,21 +37,21 @@ class Siderbar extends React.Component {
     }
 
 
-    handleClick = (e) => {
+    handleClick = (e:any) => {
         //console.log('click ', e);
         this.setState({
             current: e.key,
         });
     }
 
-    getCurrentOpenKeyByLocation(location){
+    getCurrentOpenKeyByLocation(location:any):string{
         let current = this.getCurrentByLocation(location) || 'sub1-xxx' ;
         let index = current.indexOf('-') ;
         return current.substring(0,index) ;
     }
 
-    getCurrentByLocation({pathname}){
-        pathname = pathname;
+    getCurrentByLocation(location:any):string{
+        let {pathname=''} = location;
         let len = pathname.length ;
         let current = pathname.substring(1,len) ;
         return current || 'sub1-sihtool'
@@ -106,16 +112,16 @@ class Siderbar extends React.Component {
                     </Menu>
                 </div>
                 <div id="rightWrap">
-                    <Route exact path="/" component={SIHTestTool}/>
-                    <Route exact path="/sub1-sihtool" component={SIHTestTool}/>
-                    <Route exact path="/sub1-base64" component={Base64Tool}/>
-                    <Route exact path="/sub1-json" component={JSONTool}/>
-                    <Route exact path="/sub1-md5" component={MD5Tools}/>
-                    <Route exact path="/sub1-uuid" component={UUIDTool}/>
-                    <Route exact path="/sub1-timestampconvert" component={TimeStampConvertTool}/>
-                    <Route exact path="/other-qrcodesimple" component={QRCodeSimple}/>
-                    <Route exact path="/other-myvcard" component={MyVCard}/>
-                    <Route exact path="/sub1-wordscount" component={WordsCount}/>
+                    <Route exact path="/" component={SIHTestTool as any}/>
+                    <Route exact path="/sub1-sihtool" component={SIHTestTool as any}/>
+                    <Route exact path="/sub1-base64" component={Base64Tool as any}/>
+                    <Route exact path="/sub1-json" component={JSONTool as any}/>
+                    <Route exact path="/sub1-md5" component={MD5Tools as any}/>
+                    <Route exact path="/sub1-uuid" component={UUIDTool as any}/>
+                    <Route exact path="/sub1-timestampconvert" component={TimeStampConvertTool as any}/>
+                    <Route exact path="/other-qrcodesimple" component={QRCodeSimple as any}/>
+                    <Route exact path="/other-myvcard" component={MyVCard as any}/>
+                    <Route exact path="/sub1-wordscount" component={WordsCount as any}/>
                 </div>
             </div>
         );

@@ -1,13 +1,15 @@
-import React,{Component} from 'react' ;
-import ReactDOM from 'react-dom';
+import * as React from 'react' ;
+import * as ReactDOM from 'react-dom';
 import { Input,Button,notification } from 'antd';
 let QRCode = require('qrcode') ;
 
+interface QRCodeSimpleStates{
+    inputValue:string ;
+}
 
-
-class QRCodeSimple extends Component{
-
-    constructor(props){
+class QRCodeSimple extends React.Component<any,QRCodeSimpleStates>{
+    canvas:any ;
+    constructor(props:any){
         super(props) ;
         this.canvas = null ;
         this.state = {
@@ -15,25 +17,26 @@ class QRCodeSimple extends Component{
         } ;
     }
 
-    createQRCode(str){
+    createQRCode(str:string){
         if(str == null || str.trim() == ''){
             return false;
         }
         let canvasNode = ReactDOM.findDOMNode(this.canvas) ;
-        QRCode.toCanvas(canvasNode, str, function (error) {
+        QRCode.toCanvas(canvasNode, str, function (error:any) {
             if (error) {
-                notification.error({message:'生成二维码失败'}) ;
+                notification.error({message:'生成二维码失败',description:''}) ;
                 console.error(error) ;
             }
         }) ;
+        return true ;
     }
 
-    handleInputChange = (e)=>{
+    handleInputChange = (e:any)=>{
         let value = e.target.value ;
         this.setState({inputValue:value}) ;
     }
 
-    handleClearOper = (e) =>{
+    handleClearOper = (e:any) =>{
         this.setState({inputValue:''}) ;
     }
 
@@ -45,7 +48,7 @@ class QRCodeSimple extends Component{
         return (
             <div>
                  <h5>请输入原文</h5>
-                <Input type="textarea" rows={10} 
+                <Input type="textarea" data-rows={10} 
                     value={this.state.inputValue} 
                     onChange={this.handleInputChange}/>
                 <br/>

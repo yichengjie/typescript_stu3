@@ -1,17 +1,22 @@
-import React,{PureComponent} from 'react' ;
-import {getByteLen} from '../common/common.js' ;
+import * as React from 'react' ;
+import {getByteLen} from '../common/common' ;
 import { Input,Button } from 'antd';
 
-class WordsCount extends PureComponent{
-    constructor(props){
+interface WordsCountStates{
+    inputValue:string ;
+    outputValue:string ;
+}
+
+class WordsCount extends React.PureComponent<any,WordsCountStates>{
+    constructor(props:any){
         super(props) ;
         this.state = {
             inputValue:'',
             outputValue:''
         } ;
     }
-    handleInputChangeFactory(fieldName){
-        return (e) =>{
+    handleInputChangeFactory(fieldName:any){
+        return (e:any) =>{
             let value = e.target.value ;
             this.setState({
                 [fieldName]:value
@@ -38,13 +43,13 @@ class WordsCount extends PureComponent{
         return (
             <div>
                 <h5>请输入原文</h5>
-                <Input type="textarea" rows={10} 
+                <Input type="textarea" data-rows={10} 
                     value={this.state.inputValue} 
                     onChange={this.handleInputChangeFactory('inputValue')}/>
                 <h5>结果</h5>
-                <Input type="textarea" rows={3} 
+                <Input type="textarea" data-rows={3} 
                     value={this.state.outputValue} 
-                    readOnly="readOnly"/>
+                    readOnly/>
                 <br/>
                 <div className="oper-btn-container">
                     <Button type="primary" className="oper-item" 

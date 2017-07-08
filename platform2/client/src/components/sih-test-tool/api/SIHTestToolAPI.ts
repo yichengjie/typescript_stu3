@@ -2,7 +2,7 @@ import CommonAPI from './CommonAPI.js' ;
 import HttpClientUtil from '../../../common/HttpClientUtil.js';
 import {getContextPath} from '../../../common/common.js' ;
 
-function querySIHData(jsData){
+function querySIHData(jsData:object){
     let contextPath = getContextPath() ;
     let url = contextPath +'/api/jcf/sih.action' ;
     return HttpClientUtil.dealAjaxRequest4JSObj(url,jsData) ;

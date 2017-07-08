@@ -1,4 +1,7 @@
-{
+interface IFormdata {
+    [index:string]:string ;
+};
+let formdata:IFormdata={
     "serverMode":"CLIENT",
     "serverServiceName":"CATL_USER",
     "mqIp":"10.221.136.38",
@@ -26,4 +29,6 @@
     "mqWaitSec":"10",
     "charSet":"UTF-8",
     "channelUser":""
-}
+} ;
+
+export default formdata ;

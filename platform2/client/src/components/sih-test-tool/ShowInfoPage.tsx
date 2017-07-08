@@ -1,12 +1,19 @@
 import React,{Component} from 'react' ;
 import { Input,Button ,notification} from 'antd';
-import ProgressBar from '../ProgressBar.jsx' ;
-import OnlineSwitchDev from '../online-switch-dev.js' ;
+import ProgressBar from '../ProgressBar' ;
+import OnlineSwitchDev from '../online-switch-dev' ;
 let SIHAPI = OnlineSwitchDev.SIHAPI ;
 
 
-class ShowInfoPage extends Component {
-    constructor(props){
+interface ShowInfoPageState{
+    inputValue:string ;/**用户填写的请求信息 */
+    isQuerying:boolean ;/**查询中flag */
+    reqHeaderValue:string ;/*mq的请求头信息*/
+    outputObj:any ;/**mq请求返回信息 */
+}
+
+class ShowInfoPage extends Component <any,ShowInfoPageState>{
+    constructor(props:any){
         super(props) ;
         this.state = {
            inputValue:'',/**用户填写的请求信息 */
@@ -18,22 +25,21 @@ class ShowInfoPage extends Component {
     }
     
     async componentDidMount(){
-        let {inputData,flag} = await SIHAPI.getSIHInputDataTemplate() ;
+        let {inputData} = await SIHAPI.getSIHInputDataTemplate() as any ;
         let inputValue = JSON.stringify(inputData,null,2) ;
-        let formData = SIHAPI.getSIHFormData() ;
-        this.setState({inputValue,formData}) ;
+        this.setState({inputValue}) ;
     }
     //处理请求信息修改的回掉函数
-    handleChangeInputValue = (event) => {
+    handleChangeInputValue = (event:any) => {
         let value = event.target.value ;
         this.setState({inputValue:value}) ;
     }
     //当点击查询时的处理函数
-    async handleClickQueryBtn (event){
+    async handleClickQueryBtn (event:any){
         //console.info('handleClickQueryBtn is called ..') ;
         let validFlag = this.__validateStrIsJson(this.state.inputValue) ;
         if(!validFlag){
-           notification.error({message:"输入的JSON字符串不合法!"}) ;
+           notification.error({message:"输入的JSON字符串不合法!",description:''}) ;
            return false;
         }
         let waitInfo = {info:"数据加载中，请耐心等待..."} ; 
@@ -43,15 +49,16 @@ class ShowInfoPage extends Component {
             formDataValue:this.props.formData,
             inputValue:this.state.inputValue
         } ;
-        let {outputData,reqMsgStr,flag} = await SIHAPI.querySIHData(requestParamObj) ;
+        let {outputData,reqMsgStr} = await SIHAPI.querySIHData(requestParamObj) as any ;
         this.setState({
             outputObj:outputData,
             reqHeaderValue:reqMsgStr,
             isQuerying:false
         }) ;
+        return true ;
     }
 
-    __validateStrIsJson(jsonStr){
+    __validateStrIsJson(jsonStr:string){
         let flag = true ;
         try {
             JSON.parse(jsonStr) ;
@@ -61,7 +68,7 @@ class ShowInfoPage extends Component {
         return flag ;
     }
 
-    getJSONStrByJSObj(jsObj){
+    getJSONStrByJSObj(jsObj:object){
         if(jsObj != null){
             return JSON.stringify(jsObj,null,2) ;
         }
@@ -83,18 +90,18 @@ class ShowInfoPage extends Component {
     render(){
         return (
             <div className="sih-test-tool-showInfoPage">
-                <Input type="textarea"  rows={20} 
+                <Input type="textarea"  data-rows={20} 
                     className="sih-test-tool-textarea"
                     placeholder="请输入SIH请求JSON" 
                     value = {this.state.inputValue}
                     onChange={this.handleChangeInputValue}/>
                 <div className="sih-test-tool-split"></div>
-                <Input type="textarea"  rows={20} className="sih-test-tool-textarea" 
-                    readOnly="readOnly" placeholder="SIH处理返回结果" value={
+                <Input type="textarea"  data-rows={20} className="sih-test-tool-textarea" 
+                    readOnly placeholder="SIH处理返回结果" value={
                        this.getJSONStrByJSObj(this.state.outputObj)
                     }/>
                 {this.renderQueryBtnOrProgress()}
-                <Input  type="textarea"  rows={4}  readOnly="readOnly"
+                <Input  type="textarea"  data-rows={4}  readOnly
                      value={this.state.reqHeaderValue} placeholder="MQ请求头信息"/>
             </div>
         ) ;

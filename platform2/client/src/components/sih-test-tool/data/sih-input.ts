@@ -1,4 +1,4 @@
-{
+let input = {
     "serviceName": "queryCatalog",
     "parameters": {
         "pageInfo": {
@@ -20,3 +20,4 @@
         }
     }
 }
+export default input ;
