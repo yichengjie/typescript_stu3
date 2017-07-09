@@ -21,6 +21,7 @@ class MQParamCfgPage extends Component<MQParamCfgPageProps,any> {
     }
 
     componentDidMount(){
+        //console.info('MQParamCfgPage component did mount .....') ;
         let sihFormData = this.props.formData ;
         let form = this.props.form ;
         form.setFieldsValue(sihFormData) ;

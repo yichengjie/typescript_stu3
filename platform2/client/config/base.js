@@ -8,6 +8,7 @@ module.exports = {
     context: srcPath,
     entry:{
         index:[
+            'react-hot-loader/patch',
             './index.tsx'
         ] ,
         vendor: ['react','react-dom'], 

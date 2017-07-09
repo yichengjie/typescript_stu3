@@ -18,6 +18,7 @@ class SIHTestTool extends Component<any,any> {
     }
 
     componentDidMount(){
+        //console.info('SIHTestTool component did mount .....') ;
         let sihFormData = SIHAPI.getSIHFormData() ;
         this.setState({formData:sihFormData}) ;
     }

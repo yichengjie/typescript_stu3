@@ -144,7 +144,7 @@ ansi-styles@^3.1.0:
   dependencies:
     color-convert "^1.0.0"
 
-antd@^2.11.2:
+antd@^2.12.0:
   version "2.12.0"
   resolved "http://registry.npm.taobao.org/antd/download/antd-2.12.0.tgz#2116df7c45688018ae2ad796fa6cf3e45d9e57d7"
   dependencies:

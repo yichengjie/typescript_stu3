@@ -10,7 +10,7 @@ interface ShowInfoPageState{
     inputValue:string ;/**用户填写的请求信息 */
     isQuerying:boolean ;/**查询中flag */
     reqHeaderValue:string ;/*mq的请求头信息*/
-    outputObj:any ;/**mq请求返回信息 */
+    outputObj:object | null ;/**mq请求返回信息 */
 }
 
 class ShowInfoPage extends Component <any,ShowInfoPageState>{
@@ -26,6 +26,7 @@ class ShowInfoPage extends Component <any,ShowInfoPageState>{
     }
     
     async componentDidMount(){
+        console.info('ShowInfoPage component did mount .....') ;
         let {inputData} = await SIHAPI.getSIHInputDataTemplate() as any ;
         let inputValue = JSON.stringify(inputData,null,2) ;
         this.setState({inputValue}) ;
@@ -69,11 +70,11 @@ class ShowInfoPage extends Component <any,ShowInfoPageState>{
         return flag ;
     }
 
-    getJSONStrByJSObj(jsObj:object){
+    getJSONStrByJSObj(jsObj:object|null){
         if(jsObj != null){
             return JSON.stringify(jsObj,null,2) ;
         }
-        return null ;
+        return '' ;
     }
 
     renderQueryBtnOrProgress(){
@@ -91,13 +92,13 @@ class ShowInfoPage extends Component <any,ShowInfoPageState>{
     render(){
         return (
             <div className="sih-test-tool-showInfoPage">
-                <TextArea type="textarea"  rows={20} 
+                <TextArea  rows={20} 
                     className="sih-test-tool-textarea"
                     placeholder="请输入SIH请求JSON" 
-                    value = {this.state.inputValue}
+                    value = {this.state.inputValue }
                     onChange={this.handleChangeInputValue}/>
                 <div className="sih-test-tool-split"></div>
-                <TextArea type="textarea"  rows={20} className="sih-test-tool-textarea" 
+                <TextArea  rows={20} className="sih-test-tool-textarea" 
                     readOnly placeholder="SIH处理返回结果" value={
                        this.getJSONStrByJSObj(this.state.outputObj)
                     }/>
