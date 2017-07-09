@@ -1,7 +1,6 @@
 import * as React from 'react' ;
 import * as ReactDom from 'react-dom' ;
 
-
 class Demo extends React.Component{
     render() {
         return (

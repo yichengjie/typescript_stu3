@@ -1,4 +1,3 @@
-declare let $ :any; 
 //异步调用
 export function dealAjaxRequestWithoutParam(serverURL:string){
     let config = {type:'GET'} ;

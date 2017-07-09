@@ -29,10 +29,10 @@
     ],
     "types": [
         "typePatches"
+    ],
+    "files": [
+        "typings/index.d.ts"
     ]
-    // ,"files": [
-    //     "typings/index.d.ts"
-    // ]
 }
 // "outDir": "./es/",
 // "strictNullChecks": true,

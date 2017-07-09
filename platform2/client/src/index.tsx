@@ -1,4 +1,3 @@
-declare let module : any ;
 //引入组件
 import App from './components/App' ;
 import { createAppNode,render } from './common' ;

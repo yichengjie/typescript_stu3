@@ -1,4 +1,3 @@
-declare let Cookie :any ;
 function getDBJSONData(dbKey:string){
     return function (){
         var storage = window.localStorage;  
