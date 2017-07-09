@@ -8,7 +8,7 @@ module.exports = {
     context: srcPath,
     entry:{
         index:[
-            './demo.tsx'
+            './index.tsx'
         ] ,
         vendor: ['react','react-dom'], 
     },
