@@ -1,0 +1,23 @@
+let input = {
+    "serviceName": "queryCatalog",
+    "parameters": {
+        "pageInfo": {
+            "totalPageCount": null,
+            "totalRowCount": null,
+            "currentPageNum": 1,
+            "pageSize": 10
+        },
+        "data": {
+            "productId": "551d948f8c7844f5aca7ccaf64710dd3",
+            "carrCode": "CA",
+            "subcode": "0B5",
+            "subProduct": "A",
+            "serviceType": "F",
+            "group": "",
+            "subGroup": "",
+            "distributionStatus": "0",
+            "productName": "优选座位"
+        }
+    }
+}
+export default input ;

@@ -1,0 +1,1 @@
+- 在platform2的基础上，剔除了webpac的手动启动方式
