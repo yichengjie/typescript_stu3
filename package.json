@@ -48,9 +48,9 @@
         "extract-text-webpack-plugin": "^2.1.2",
         "file-loader": "^0.11.2",
         "html-webpack-plugin": "^2.29.0",
+        "jest": "^20.0.4",
         "less": "^2.7.2",
         "less-loader": "^4.0.4",
-        "react-dev-utils": "^3.0.2",
         "react-hot-loader": "next",
         "style-loader": "^0.18.2",
         "ts-loader": "^2.2.2",
@@ -60,7 +60,6 @@
         "typescript": "^2.4.1",
         "url-loader": "^0.5.9",
         "webpack": "^3.1.0",
-        "webpack-dev-middleware": "^1.11.0",
         "webpack-dev-server": "^2.5.1",
         "webpack-manifest-plugin": "^1.1.2",
         "webpack-merge": "^4.1.0"
