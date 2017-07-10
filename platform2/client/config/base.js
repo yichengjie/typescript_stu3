@@ -47,5 +47,6 @@ module.exports = {
         filename:"style.[contenthash:16].css"
       }),
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+      new webpack.optimize.ModuleConcatenationPlugin(),
     ],
 };

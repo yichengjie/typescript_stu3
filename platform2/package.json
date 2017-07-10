@@ -9,8 +9,8 @@
         "build": "../node_modules/.bin/webpack --config ./client/webpack.config.js --env=prod --progress --profile --colors",
         "dev": "../node_modules/.bin/webpack-dev-server --config ./client/webpack.config.js --env=dev --progress --profile --colors",
         "dev2": "../node_modules/.bin/webpack-dev-server --config ./client/webpack.config.js --env=dev --progress --profile --colors --open",
-        "ttt":"node ./scripts/build.js",
-        "ttt2":"node ./scripts/dev.js"
+        "nbuild":"node ./scripts/build.js",
+        "ndev":"node ./scripts/dev.js"
     },
     "jest": {}
 }
