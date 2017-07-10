@@ -25,6 +25,9 @@ module.exports = webpackMerge(commonConfig, {
         host:localIPAddress,
         contentBase: [publicPath],  // New
         //其实很简单的，只要配置这个参数就可以了  
+        stats: {
+        　　colors: true // 用颜色标识
+        },
         hot:true,
         proxy: {  
             '/api/*/**': {  
