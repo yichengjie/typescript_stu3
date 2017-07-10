@@ -89,14 +89,16 @@ class Category4Edit extends React.Component <any,Category4EditState>{
         let {id} = this.state ;
         if(id && id.length > 0){
             let retData = await queryCategory4ById(id) ;
-            let {category4} = retData ;
-            let {list1,list2,basicInfo} = category4 ;
-            let newBasicInfo = Object.assign({},this.state.basicInfo,basicInfo) ;
-            this.setState({
-                flightList1:list1 ,
-                flightList2:list2,
-                basicInfo:newBasicInfo
-            }) ;
+            let {category4,flag} = retData ;
+            if(flag){
+                let {list1,list2,basicInfo} = category4 ;
+                let newBasicInfo = Object.assign({},this.state.basicInfo,basicInfo) ;
+                this.setState({
+                    flightList1:list1 ,
+                    flightList2:list2,
+                    basicInfo:newBasicInfo
+                }) ;
+            }
         }
     }
 
@@ -315,7 +317,6 @@ class Category4Edit extends React.Component <any,Category4EditState>{
         ) ;
     }
 }
-
 
 
 function getFormatDateStr(str:string ) : moment.Moment | undefined{

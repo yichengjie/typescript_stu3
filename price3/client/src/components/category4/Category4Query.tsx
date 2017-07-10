@@ -1,5 +1,5 @@
 import {Button,Icon,notification} from 'antd';
-import {queryAllCategory4} from './api/CommonApi' ;
+import {queryAllCategory4,testDoPost} from './api/CommonApi' ;
 import * as React from 'react' ;
 import FlightInfoContainer,{getFlightNoIconByValue} from './FlightInfoContainer' ;
 import {dealProjectUrl} from '../common' ;
@@ -44,7 +44,7 @@ class Category4Query extends React.Component<any,Category4QueryState> {
         const list = {...this.state.list} ;
         delete list[id] ;
         this.setState({list}) ;
-        notification.success({message:'删除成功!',description:'描述信息'}) ;
+        notification.success({message:'删除成功!',description:''}) ;
     }
     //点击新建时
     hadleToNewAddUI(){
@@ -57,6 +57,18 @@ class Category4Query extends React.Component<any,Category4QueryState> {
         let url = 'edit.html?id='+id ;
         url = dealProjectUrl(url);
         window.location.href = url ;
+    }
+
+    async handleTestDoPost1(){
+       let containerName = 'testDoPost1' ;
+       let retData =  await testDoPost(containerName) ;
+       console.info(retData) ;
+    }
+
+    async handleTestDoPost2(){
+       let containerName = 'testDoPost2' ;
+       let retData =  await testDoPost(containerName) ;
+       console.info(retData) ;
     }
 
     renderListItem(item:ListItemProps,key:string,index:number,count:number){
@@ -84,6 +96,12 @@ class Category4Query extends React.Component<any,Category4QueryState> {
                 <div className="category-section-row">
                     <Button type="primary" onClick={this.hadleToNewAddUI}>
                         新建
+                    </Button>
+                    <Button type="primary" onClick={this.handleTestDoPost1}>
+                        testestDoPost1
+                    </Button>
+                    <Button type="primary" onClick={this.handleTestDoPost2}>
+                         testestDoPost1
                     </Button>
                 </div>
                 {this.renderList()}
