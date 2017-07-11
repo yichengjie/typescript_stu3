@@ -10,6 +10,14 @@ let localIPAddress = common.getIPAdress() ;
 let localPort = 3000 ;
 let serverIPAddress = localIPAddress;
 let serverPort = 9090 ;
+let serverPort2 = 8080 ;
+//这个地址是项目中自己模拟的后台api
+let proxyUrl1 = 'http://'+serverIPAddress+':'+serverPort+'/' ; 
+//这个地址是真实环境中中的后台api
+let proxyUrl2 = 'http://'+serverIPAddress+':'+serverPort2+'/easyfare' ;
+//切换后台api接口
+let proxyUrl = proxyUrl2 ;
+
 
 module.exports = webpackMerge(commonConfig, {
     devtool: 'cheap-module-eval-source-map',
@@ -28,7 +36,7 @@ module.exports = webpackMerge(commonConfig, {
         hot:true,
         proxy: {  
             '/api/*': {  
-                target: 'http://'+serverIPAddress+':'+serverPort+'/',  
+                target: proxyUrl,  
                 secure: false  
             }  
         }  

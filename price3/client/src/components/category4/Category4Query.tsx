@@ -97,11 +97,13 @@ class Category4Query extends React.Component<any,Category4QueryState> {
                     <Button type="primary" onClick={this.hadleToNewAddUI}>
                         新建
                     </Button>
+                    &nbsp; &nbsp;
                     <Button type="primary" onClick={this.handleTestDoPost1}>
-                        testestDoPost1
+                        testDoPost1
                     </Button>
+                    &nbsp; &nbsp;
                     <Button type="primary" onClick={this.handleTestDoPost2}>
-                         testestDoPost1
+                         testDoPost2
                     </Button>
                 </div>
                 {this.renderList()}

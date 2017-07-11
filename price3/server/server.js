@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 var path = require('path') ;
+var bodyParser = require('body-parser');
+
 var port = 9090 ;
 var CategoryService = require('./category/category4.js') ;
 
@@ -11,6 +13,7 @@ let distPath = path.resolve(__dirname,'../dist') ;
 app.use('/public',express.static(publicPath));
 app.use(express.static(jspPath));
 app.use('/dist',express.static(distPath));
+app.use(bodyParser.json());
 
 
 //getAllCategoryStaticData 
@@ -34,6 +37,28 @@ app.get('/api/queryCategory4ById',function(req, res){
       data:category4,
   } ;
   res.json(retData);
+}) ;
+
+
+app.post('/api/testDoPost1',function(req,res){
+  let queryParam = req.body;
+  console.info('queryParam : ' , queryParam) ;
+  let retData = {
+     flag:true,
+     msg:'hello world'
+  } ;
+  res.json(retData) ;
+}) ;
+
+app.post('/api/testDoPost2',function(req,res){
+  let queryParam = req.body;
+  console.info('queryParam : ' , queryParam) ;
+
+  let retData = {
+     flag:true,
+     msg:'hello world 2'
+  } ;
+  res.json(retData) ;
 }) ;
 
 

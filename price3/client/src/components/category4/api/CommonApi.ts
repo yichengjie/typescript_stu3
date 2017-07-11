@@ -36,7 +36,7 @@ export async function queryCategory4ById(paramId:string){
 
 export async function testDoPost(controllerName:string){
     let url = `/api/${controllerName}` ;
-    let param = {id:'001',name:'admin',addr:'henan'} ;
+    let param = {id:'001',name:'admin',addr:'henan',test:'test'} ;
     const response =  await doPost(url,param) ;
     return response ;
 }
