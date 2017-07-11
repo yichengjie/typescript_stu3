@@ -34,6 +34,7 @@ export function dealProjectUrl(url:string){
     return contextPath + url ;
 }
 
+
 export function joinArr2Str(arr:any[],splitStr?:string){
     if(isObjNull(arr) || arr.length === 0){
         return '' ;

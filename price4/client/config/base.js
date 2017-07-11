@@ -7,13 +7,13 @@ const srcPath = common.getSrcPath() ;
 module.exports = {
     context: srcPath,
     entry:{
-        index:[
+        category4Query:[
             'react-hot-loader/patch',
-            './index.tsx'
+            './category4Query.tsx'
         ] ,
-        edit:[
+        category4Edit:[
             'react-hot-loader/patch',
-            './edit.tsx'
+            './category4Edit.tsx'
         ],
         vendor: ['react','react-dom','moment','lodash'], 
     },

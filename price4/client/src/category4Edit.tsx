@@ -1,4 +1,3 @@
-declare var module: any ;
 import {createAppNode,render} from './common' ;
 import Category4EditApp from './components/category4/Category4Edit' ;
 

@@ -50,15 +50,15 @@ module.exports = webpackMerge(commonConfig, {
         new webpack.HotModuleReplacementPlugin(), // Enable HMR
         new HtmlWebpackPlugin({
             template: assetsPath +'/template.html',
-            filename:'index.html',
+            filename:'category/category4Query.html',
             inject:'body',
-            chunks:['index','vendor']   // 这个模板对应上面那个节点
+            chunks:['category4Query','vendor']   // 这个模板对应上面那个节点
         }),
         new HtmlWebpackPlugin({
             template: assetsPath +'/template.html',
-            filename:'edit.html',
+            filename:'category/category4Edit.html',
             inject:'body',
-            chunks:['edit','vendor']   // 这个模板对应上面那个节点
+            chunks:['category4Edit','vendor']   // 这个模板对应上面那个节点
         })
     ]
 });
