@@ -1,5 +1,5 @@
 import {Button,Icon,notification} from 'antd';
-import {queryAllCategory4,testDoPost} from './api/CommonApi' ;
+import {queryAllCategory4,testDoPost2,testDoGet1} from './api/CommonApi' ;
 import * as React from 'react' ;
 import FlightInfoContainer,{getFlightNoIconByValue} from './FlightInfoContainer' ;
 import {dealProjectUrl} from '../common' ;
@@ -59,15 +59,14 @@ class Category4Query extends React.Component<any,Category4QueryState> {
         window.location.href = url ;
     }
 
-    async handleTestDoPost1(){
-       let containerName = 'testDoPost1' ;
-       let retData =  await testDoPost(containerName) ;
+    async handleTestDoGet1(){
+       let retData =  await testDoGet1() ;
        console.info(retData) ;
     }
 
     async handleTestDoPost2(){
        let containerName = 'testDoPost2' ;
-       let retData =  await testDoPost(containerName) ;
+       let retData =  await testDoPost2(containerName) ;
        console.info(retData) ;
     }
 
@@ -98,7 +97,7 @@ class Category4Query extends React.Component<any,Category4QueryState> {
                         新建
                     </Button>
                     &nbsp; &nbsp;
-                    <Button type="primary" onClick={this.handleTestDoPost1}>
+                    <Button type="primary" onClick={this.handleTestDoGet1}>
                         testDoPost1
                     </Button>
                     &nbsp; &nbsp;

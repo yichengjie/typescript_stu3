@@ -40,8 +40,8 @@ app.get('/api/queryCategory4ById',function(req, res){
 }) ;
 
 
-app.post('/api/testDoPost1',function(req,res){
-  let queryParam = req.body;
+app.get('/api/testDoGet1',function(req,res){
+  let queryParam = req.query;
   console.info('queryParam : ' , queryParam) ;
   let retData = {
      flag:true,
