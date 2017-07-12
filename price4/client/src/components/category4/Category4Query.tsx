@@ -48,13 +48,13 @@ class Category4Query extends React.Component<any,Category4QueryState> {
     }
     //点击新建时
     hadleToNewAddUI(){
-        let url = 'category/category4Edit.html' ;
+        let url = 'pages/category/category4Edit.html' ;
         url = dealProjectUrl(url);
         window.location.href = url ;
     }
 
     handleToModifyUI(id:string){
-        let url = 'category/category4Edit.html?id='+id ;
+        let url = 'pages/category/category4Edit.html?id='+id ;
         url = dealProjectUrl(url);
         window.location.href = url ;
     }

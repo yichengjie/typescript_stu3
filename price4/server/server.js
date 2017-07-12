@@ -6,13 +6,15 @@ var bodyParser = require('body-parser');
 var port = 9090 ;
 var CategoryService = require('./category/category4.js') ;
 
-let publicPath = path.resolve(__dirname,'../public') ;
-let jspPath = path.resolve(__dirname,'../jsp') ;
-let distPath = path.resolve(__dirname,'../dist') ;
+let webappPath = path.resolve(__dirname,'../webapp') ;
+//let publicPath = path.resolve(__dirname,'../public') ;
+//let jspPath = path.resolve(__dirname,'../jsp') ;
+//let distPath = path.resolve(__dirname,'../dist') ;
 
-app.use('/public',express.static(publicPath));
-app.use(express.static(jspPath));
-app.use('/dist',express.static(distPath));
+//app.use('/public',express.static(publicPath));
+//app.use(express.static(jspPath));
+//app.use('/dist',express.static(distPath));
+app.use(express.static(webappPath)) ;
 app.use(bodyParser.json());
 
 

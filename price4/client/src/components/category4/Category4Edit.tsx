@@ -197,7 +197,7 @@ class Category4Edit extends React.Component <any,Category4EditState>{
         this.setState({flightInfo:obj}) ;
     }
     handle2QueryUI(){
-        let url = 'category/category4Query.html' ;
+        let url = 'pages/category/category4Query.html' ;
         url = dealProjectUrl(url) ;
         window.location.href = url ;
     }

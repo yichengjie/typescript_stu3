@@ -3,10 +3,20 @@ var path = require('path') ;
 var stat = fs.stat ;
 
 let contextPath = path.resolve(__dirname, '../../') ;
-let distPath = contextPath+"/dist" ;
-let publicPath = contextPath + '/public' ;
+let distPath = contextPath+"/webapp/dist" ;
+let publicPath = contextPath + '/webapp/public' ;
 let srcPath = contextPath + '/client/src' ;
 let assetsPath = contextPath + '/client/assets';
+
+console.info('-----------------------------------') ;
+console.info(`contextPath : ${contextPath}`) ;
+console.info(`distPath : ${distPath}`) ;
+console.info(`publicPath : ${publicPath}`) ;
+console.info(`srcPath : ${srcPath}`) ;
+console.info(`assetsPath : ${assetsPath}`) ;
+console.info('-----------------------------------') ;
+
+
 
 //前端的根目录
 function getContextPath(){
