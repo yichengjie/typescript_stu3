@@ -7,9 +7,9 @@ let common = require('./common.js') ;
 let pagesRouterMap = require('../pages-router.json') ;
 var publicPath = common.getPublicPath() ;
 var assetsPath = common.getAssetsPath() ;
-let localIPAddress = common.getIPAdress() ;
+let localIPAddress = 'localhost' ;
 let localPort = 3000 ;
-let serverIPAddress = localIPAddress;
+let serverIPAddress = common.getIPAdress() ;;
 let serverPort = 9090 ;
 let serverPort2 = 8080 ;
 //这个地址是项目中自己模拟的后台api
