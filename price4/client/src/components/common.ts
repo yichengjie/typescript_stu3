@@ -9,6 +9,10 @@ export function getPagesRouterMap4Category4(){
     } ;
 }
 
+export function getPagesRouterMap4Index(){
+    return pagesRouterMap.index ;
+}
+
 
 export function getQueryString(name:string):string { 
     const searchStr = window.location.search ;
@@ -66,6 +70,7 @@ export default {
    dealProjectUrl,
    joinArr2Str,
    isObjNull,
-   getPagesRouterMap4Category4
+   getPagesRouterMap4Category4,
+   getPagesRouterMap4Index
 } ;
 

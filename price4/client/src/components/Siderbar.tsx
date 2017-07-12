@@ -2,6 +2,8 @@ import * as React from 'react' ;
 import { Layout, Menu, Icon } from 'antd';
 const {Content, Footer, Sider } = Layout;
 const SubMenu = Menu.SubMenu ;
+import {getPagesRouterMap4Index,dealProjectUrl} from './common' ; 
+const indexPageUrl = getPagesRouterMap4Index() ;
 
 interface SiderbarProps{
   current:string ;
@@ -52,6 +54,12 @@ class Siderbar extends React.Component <SiderbarProps,any>{
       openKeys
     });
   }
+
+  handleToIndexUI(){
+    let url = indexPageUrl ;
+    url = dealProjectUrl(url) ;
+    window.location.href = url ; 
+  }
   render() {
     let {openKeys} = this.state;
     let otherProps = {
@@ -65,7 +73,9 @@ class Siderbar extends React.Component <SiderbarProps,any>{
           collapsed={this.state.collapsed}
           onCollapse={this.onCollapse}
         >
-          <div className="logo" > {this.state.collapsed ? 'EF':'EasyFare GUI'}</div>
+          <div className="logo" onClick={this.handleToIndexUI}> 
+            {this.state.collapsed ? 'EF':'EasyFare GUI'}
+          </div>
           <Menu theme="dark" 
             mode={this.state.mode} 
             onClick={this.handleMenuItemClick}
