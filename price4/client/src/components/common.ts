@@ -1,9 +1,6 @@
 import * as _ from 'lodash' ;
 import pagesRouterMap from '../../pages-router.json' ;
 
-
-console.info('pagesRouterMap : ' , pagesRouterMap) ;
-
 //category4模块页面地址路由
 export function getPagesRouterMap4Category4(){
     return {
@@ -32,6 +29,7 @@ function getContextPath(){
     //console.info('contextPathNode : ' ,contextPathNode) ;
     const contextPath =  (contextPathNode && contextPathNode.value) || '';
     //console.info('contextPath : ' ,contextPath) ;
+
     return contextPath ;
 }
 
