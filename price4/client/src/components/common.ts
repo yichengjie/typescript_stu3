@@ -1,4 +1,17 @@
 import * as _ from 'lodash' ;
+import pagesRouterMap from '../../pages-router.json' ;
+
+
+console.info('pagesRouterMap : ' , pagesRouterMap) ;
+
+//category4模块页面地址路由
+export function getPagesRouterMap4Category4(){
+    return {
+       category4Query:pagesRouterMap.category.category4.category4Query,
+       category4Edit:pagesRouterMap.category.category4.category4Edit
+    } ;
+}
+
 
 export function getQueryString(name:string):string { 
     const searchStr = window.location.search ;
@@ -54,6 +67,7 @@ export default {
    getQueryString ,
    dealProjectUrl,
    joinArr2Str,
-   isObjNull
+   isObjNull,
+   getPagesRouterMap4Category4
 } ;
 

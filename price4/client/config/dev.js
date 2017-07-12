@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin'); //通过 npm 安装
 const commonConfig = require('./base.js');
 let path = require('path') ;
 let common = require('./common.js') ;
+let pagesRouterMap = require('../pages-router.json') ;
 var publicPath = common.getPublicPath() ;
 var assetsPath = common.getAssetsPath() ;
 let localIPAddress = common.getIPAdress() ;
@@ -50,13 +51,13 @@ module.exports = webpackMerge(commonConfig, {
         new webpack.HotModuleReplacementPlugin(), // Enable HMR
         new HtmlWebpackPlugin({
             template: assetsPath +'/template.html',
-            filename:'pages/category/category4Query.html',
+            filename:pagesRouterMap.category.category4.category4Query,
             inject:'body',
             chunks:['category4Query','vendor']   // 这个模板对应上面那个节点
         }),
         new HtmlWebpackPlugin({
             template: assetsPath +'/template.html',
-            filename:'pages/category/category4Edit.html',
+            filename:pagesRouterMap.category.category4.category4Edit,
             inject:'body',
             chunks:['category4Edit','vendor']   // 这个模板对应上面那个节点
         })

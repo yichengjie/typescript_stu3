@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>EasyFare</title>
     <link rel="stylesheet" href="/public/antd/antd.min.css">
+<body>
+    <!--这个目录是从项目的contextPath以后的路径开始计算的-->
+    <input type="hidden" id ="relativePath" value="/jsp/category/"/>
+    <script  type="text/javascript" src="/public/babel-polyfill/polyfill.min.js"></script>
+    <script type="text/javascript" src="/public/axios/axios.min.js"></script>
+    <script type="text/javascript" src="/public/load.js"></script>
     <script type="text/javascript"> 
+        //加载模块需要的资源文件
         window.onload = function (){
            new DynamicLoadPageResoure('category4Edit') ;
         } 
     </script>
-<body>
-    <!--这个目录是从项目的contextPath以后的路径开始计算的-->
-    <input type="hidden" id ="relativePath" value="/jsp/category/"/>
-
-    <script  type="text/javascript" src="/public/babel-polyfill/polyfill.min.js"></script>
-    <script type="text/javascript" src="/public/axios/axios.min.js"></script>
-    <script type="text/javascript" src="/public/load.js"></script>
 </body>
 </html>

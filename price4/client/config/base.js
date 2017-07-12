@@ -18,7 +18,7 @@ module.exports = {
         vendor: ['react','react-dom','moment','lodash'], 
     },
     resolve: {
-        extensions: [".ts", ".tsx", ".js", ".json"]
+        extensions: [".ts", ".tsx", ".js", ".json"],
     },
     module: {
       rules: [

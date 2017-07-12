@@ -3,8 +3,10 @@ import FlightInfoContainer from './FlightInfoContainer' ;
 import * as moment from 'moment';
 import * as _ from 'lodash' ;
 import {queryCategory4ById} from './api/CommonApi' ;
-import {getQueryString,dealProjectUrl} from '../common' ;
+import {getQueryString,dealProjectUrl,getPagesRouterMap4Category4} from '../common' ;
 import Siderbar from '../Siderbar' ;
+//页面站点地址路由
+const pageRouterMap = getPagesRouterMap4Category4() ;
 
 import {Select,Input,Radio,Checkbox,Icon,Button,
     TimePicker,message} from 'antd';
@@ -197,7 +199,7 @@ class Category4Edit extends React.Component <any,Category4EditState>{
         this.setState({flightInfo:obj}) ;
     }
     handle2QueryUI(){
-        let url = 'pages/category/category4Query.html' ;
+        let url = pageRouterMap.category4Query ;
         url = dealProjectUrl(url) ;
         window.location.href = url ;
     }

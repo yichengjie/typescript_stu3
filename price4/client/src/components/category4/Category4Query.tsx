@@ -2,9 +2,10 @@ import {Button,Icon,notification} from 'antd';
 import {queryAllCategory4,testDoPost2,testDoGet1} from './api/CommonApi' ;
 import * as React from 'react' ;
 import FlightInfoContainer,{getFlightNoIconByValue} from './FlightInfoContainer' ;
-import {dealProjectUrl} from '../common' ;
+import {dealProjectUrl,getPagesRouterMap4Category4} from '../common' ;
 import {FlightInfoMap} from './other/common' ;
 import Siderbar from '../Siderbar' ;
+const pagesRouterMap = getPagesRouterMap4Category4() ;
 
 interface Category4QueryState { 
    list:{[index:string]:any};
@@ -48,13 +49,13 @@ class Category4Query extends React.Component<any,Category4QueryState> {
     }
     //点击新建时
     hadleToNewAddUI(){
-        let url = 'pages/category/category4Edit.html' ;
+        let url = pagesRouterMap.category4Edit ;
         url = dealProjectUrl(url);
         window.location.href = url ;
     }
 
     handleToModifyUI(id:string){
-        let url = 'pages/category/category4Edit.html?id='+id ;
+        let url = pagesRouterMap.category4Edit +'?id='+id ;
         url = dealProjectUrl(url);
         window.location.href = url ;
     }
