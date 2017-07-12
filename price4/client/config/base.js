@@ -9,15 +9,15 @@ module.exports = {
     entry:{
         login:[
           'react-hot-loader/patch',
-          './login.tsx'
+          './entrys/login.tsx'
         ],
         category4Query:[
             'react-hot-loader/patch',
-            './category4Query.tsx'
+            './entrys/category4Query.tsx'
         ] ,
         category4Edit:[
             'react-hot-loader/patch',
-            './category4Edit.tsx'
+            './entrys/category4Edit.tsx'
         ],
         vendor: ['react','react-dom','moment','lodash'], 
     },
