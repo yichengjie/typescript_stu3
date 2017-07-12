@@ -1,7 +1,6 @@
 declare module 'classnames';
 declare module 'react-hot-loader' ;
 declare module 'lodash' ;
-declare module 'pagesRouter' ;
 
 declare var require: any ;
 declare let module : any ;
