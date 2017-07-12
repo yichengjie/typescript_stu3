@@ -51,6 +51,12 @@ module.exports = webpackMerge(commonConfig, {
         new webpack.HotModuleReplacementPlugin(), // Enable HMR
         new HtmlWebpackPlugin({
             template: assetsPath +'/template.html',
+            filename:pagesRouterMap.index,
+            inject:'body',
+            chunks:['login','vendor']   // 这个模板对应上面那个节点
+        }),
+        new HtmlWebpackPlugin({
+            template: assetsPath +'/template.html',
             filename:pagesRouterMap.category.category4.category4Query,
             inject:'body',
             chunks:['category4Query','vendor']   // 这个模板对应上面那个节点

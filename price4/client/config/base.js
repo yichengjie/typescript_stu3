@@ -7,6 +7,10 @@ const srcPath = common.getSrcPath() ;
 module.exports = {
     context: srcPath,
     entry:{
+        login:[
+          'react-hot-loader/patch',
+          './login.tsx'
+        ],
         category4Query:[
             'react-hot-loader/patch',
             './category4Query.tsx'
