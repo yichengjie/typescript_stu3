@@ -5,7 +5,7 @@ import { createAppNode,render } from './common' ;
 const appNode = createAppNode() ;
 render(LoginApp,appNode) ;
 if (module.hot) {
-  module.hot.accept('../components/login/Login.tsx', () => { 
+  module.hot.accept('../components/login/Login', () => { 
     render(LoginApp,appNode) ;
   }) ;
 }

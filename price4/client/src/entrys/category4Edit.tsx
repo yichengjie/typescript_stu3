@@ -5,7 +5,7 @@ const appNode = createAppNode() ;
 render(Category4EditApp,appNode) ;
 
 if (module.hot) {
-  module.hot.accept('../components/category4/Category4Edit.tsx', () => { 
+  module.hot.accept('../components/category4/Category4Edit', () => { 
     render(Category4EditApp,appNode) ;
   }) ;
 }
