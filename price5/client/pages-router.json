@@ -1,0 +1,9 @@
+{
+    "index":"index.html",
+    "category":{
+        "category4":{
+            "category4Query":"pages/category/category4Query.html",
+            "category4Edit":"pages/category/category4Edit.html"
+        }
+    }
+}
