@@ -1,1 +1,0 @@
-在price4中发现host-loader会刷新整个页面，是因为ts-loader的原因，需要修改
