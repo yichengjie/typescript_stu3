@@ -16,11 +16,8 @@ const RadioButton = Radio.Button;
 const CheckboxGroup = Checkbox.Group;
 const format = 'HH:mm';
 
-interface CategorySectionProps{
-    children:string;
-}
 
-function CategorySection (props:CategorySectionProps){
+function CategorySection (props:{children:string}){
     return (
         <div className="category-section-title">
             <span className="title">{props.children}</span>
@@ -127,15 +124,16 @@ class Category4Edit extends React.Component <any,Category4EditState>{
             let value = getChangeValue(event) ;
             //星期天需要排序
             this.delFlightApplyWeek(fieldName,value) ;
+
             let newFormData = Object.assign({},formData,{[fieldName]:value}) ;
             this.setState({[formDataName]:newFormData}) ;
         } ;
     }
 
     //星期天需要从大到小进行排序
-    delFlightApplyWeek(fieldName:string,value:number[]){
+    delFlightApplyWeek(fieldName:string,value:any){
         if(fieldName === 'flightApplyWeek' && value && value.length > 1){
-            value.sort(function(a:number,b:number){
+            value.sort(function(a:any,b:any){
                 return a - b ;
             }) ;
         }
