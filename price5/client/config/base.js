@@ -2,7 +2,11 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 let common = require('./common.js') ;
+const clientPath = common.getClientPath() ;
 const srcPath = common.getSrcPath() ;
+const typescriptPath = common.getTypescriptPath() ;
+
+console.info('typescriptPath : ' ,typescriptPath) ;
 
 module.exports = {
     context: srcPath,
@@ -29,14 +33,9 @@ module.exports = {
         // First, run the linter.
         // It's important to do this before Babel processes the JS.
         {
-          test: /\.(ts|tsx)$/,
-          loader: require.resolve('tslint-loader'),
-          enforce: 'pre',
-          include: srcPath,
-        },
-        {
           test: /\.jsx?$/,exclude: [/node_modules/],
-          loader: "babel-loader"
+          loader: "babel-loader",
+          include:srcPath
         },
         {
           test: /\.css$/,

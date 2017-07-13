@@ -2,11 +2,16 @@ var fs = require('fs'); // 引入fs模块
 var path = require('path') ;
 var stat = fs.stat ;
 
+let clientPath = path.resolve(__dirname, '../') ;
 let contextPath = path.resolve(__dirname, '../../') ;
 let distPath = contextPath+"/webapp/dist" ;
 let publicPath = contextPath + '/webapp/public' ;
 let srcPath = contextPath + '/client/ts-build' ;
 let assetsPath = contextPath + '/client/assets';
+let typescriptPath = contextPath + '/client/src' ;
+
+
+
 
 // console.info('-----------------------------------') ;
 // console.info(`contextPath : ${contextPath}`) ;
@@ -17,6 +22,10 @@ let assetsPath = contextPath + '/client/assets';
 // console.info('-----------------------------------') ;
 
 //前端的根目录
+function getClientPath(){
+    return clientPath ;
+}
+//项目根目录
 function getContextPath(){
    return contextPath ;  
 }
@@ -35,6 +44,10 @@ function getAssetsPath(){
 
 function getPublicPath(){
     return publicPath ;
+}
+
+function getTypescriptPath(){
+    return typescriptPath ;
 }
 
 //删除指定的目录
@@ -121,6 +134,8 @@ module.exports = {
     getContextPath:getContextPath,
     getDistPath:getDistPath,
     getSrcPath:getSrcPath,
+    getTypescriptPath:getTypescriptPath,
     getAssetsPath:getAssetsPath,
-    getPublicPath:getPublicPath
+    getPublicPath:getPublicPath,
+    getClientPath:getClientPath
 } ;

@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "price2.0 update to webpack2.0",
     "scripts": {
+        "tslint":"../node_modules/.bin/tslint -c tslint.json 'client/src/**/*' ",
         "tsc": "../node_modules/.bin/tsc",
         "tscdev": "../node_modules/.bin/tsc --watch",
         "test": "../node_modules/.bin/jest",

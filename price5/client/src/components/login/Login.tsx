@@ -22,11 +22,12 @@ class Login extends React.Component<any,any>{
     }
     render(){
         let {loading} = this.state ;
+        console.info('loading : ' + loading) ;
         return(
             <div className="LoginContainer">
                 <Spin spinning={loading}>
                     <section className="container">
-                        <h2>Easyfare登录</h2>
+                        <h2>Easyfare登录2</h2>
 
                         <form>
                             <input className="input" type="text"  placeholder="请输入用户名"/>

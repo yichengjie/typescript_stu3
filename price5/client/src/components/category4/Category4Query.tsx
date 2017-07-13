@@ -1,6 +1,6 @@
+import React from 'react' ;
 import {Button,Icon,notification} from 'antd';
 import {queryAllCategory4,testDoPost2,testDoGet1} from './api/CommonApi' ;
-import * as React from 'react' ;
 import FlightInfoContainer,{getFlightNoIconByValue} from './FlightInfoContainer' ;
 import {dealProjectUrl,getPagesRouterMap4Category4} from '../common' ;
 import {FlightInfoMap} from './other/common' ;

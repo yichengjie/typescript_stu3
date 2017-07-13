@@ -1,4 +1,4 @@
-import * as React from 'react' ;
+import React from 'react' ;
 import { Layout, Menu, Icon } from 'antd';
 const {Content, Footer, Sider } = Layout;
 const SubMenu = Menu.SubMenu ;

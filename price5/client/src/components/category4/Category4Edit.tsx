@@ -1,4 +1,4 @@
-import * as React from 'react' ;
+import React from 'react' ;
 import FlightInfoContainer from './FlightInfoContainer' ;
 import * as moment from 'moment';
 import * as _ from 'lodash' ;

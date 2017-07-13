@@ -1,5 +1,5 @@
 import {Tooltip} from 'antd'; 
-import * as React from 'react' ;
+import React from 'react' ;
 
 interface EllipsisProps{
     width?:number ;
