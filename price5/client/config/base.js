@@ -6,8 +6,6 @@ const clientPath = common.getClientPath() ;
 const srcPath = common.getSrcPath() ;
 const typescriptPath = common.getTypescriptPath() ;
 
-console.info('typescriptPath : ' ,typescriptPath) ;
-
 module.exports = {
     context: srcPath,
     entry:{
